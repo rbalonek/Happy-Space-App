@@ -12,11 +12,7 @@ const styles = StyleSheet.create({
 const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Text>Protected Home Screen</Text>
-      <Button
-        title="Go to Landing"
-        onPress={() => navigation.navigate("Landing")}
-      />
+      <Text>Home Screen</Text>
       <Button title="Go to News" onPress={() => navigation.navigate("News")} />
       <Button
         title="See Dad Jokes!"

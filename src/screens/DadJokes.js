@@ -31,7 +31,6 @@ export default function DadJokes({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Button title="Go to Home" onPress={() => navigation.navigate("Home")} />
       <Text style={styles.title}>Random Dad Joke App</Text>
       <TouchableHighlight onPress={fetchApiCall}>
         <View style={styles.button}>

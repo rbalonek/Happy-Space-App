@@ -36,10 +36,6 @@ const News = ({ navigation }) => {
 
   return (
     <View>
-      <Button
-        title="Go to Landing"
-        onPress={() => navigation.navigate("Landing")}
-      />
       <FlatList
         data={news.articles}
         keyExtractor={(item, index) => "key" + index}

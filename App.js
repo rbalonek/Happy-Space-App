@@ -7,17 +7,16 @@ import HomeScreen from "./src/screens/Home/Home";
 import News from "./src/screens/News";
 import DadJokes from "./src/screens/DadJokes";
 
-const RootStack = createStackNavigator();
+const Stack = createStackNavigator();
 
 const App = () => {
   return (
     <NavigationContainer>
-      <RootStack.Navigator>
-        <RootStack.Screen name="Landing" component={LandingScreen} />
-        <RootStack.Screen name="Home" component={HomeScreen} />
-        <RootStack.Screen name="News" component={News} />
-        <RootStack.Screen name="DadJokes" component={DadJokes} />
-      </RootStack.Navigator>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="News" component={News} />
+        <Stack.Screen name="DadJokes" component={DadJokes} />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 };
