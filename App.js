@@ -4,6 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import LandingScreen from "./src/screens/Landing/Landing";
 import HomeScreen from "./src/screens/Home/Home";
+import News from "./src/screens/News";
 
 const RootStack = createStackNavigator();
 
@@ -11,8 +12,9 @@ const App = () => {
   return (
     <NavigationContainer>
       <RootStack.Navigator>
-        <RootStack.Screen name="Home" component={HomeScreen} />
         <RootStack.Screen name="Landing" component={LandingScreen} />
+        <RootStack.Screen name="Home" component={HomeScreen} />
+        <RootStack.Screen name="News" component={News} />
       </RootStack.Navigator>
     </NavigationContainer>
   );
