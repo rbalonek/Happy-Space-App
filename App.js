@@ -6,6 +6,8 @@ import HomeScreen from "./src/screens/Home/Home";
 import News from "./src/screens/News";
 import DadJokes from "./src/screens/DadJokes";
 
+import ToDo from "./src/screens/ToDo";
+
 const Stack = createStackNavigator();
 
 const App = () => {
@@ -15,6 +17,7 @@ const App = () => {
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="News" component={News} />
         <Stack.Screen name="DadJokes" component={DadJokes} />
+        <Stack.Screen name="ToDo" component={ToDo} />
       </Stack.Navigator>
     </NavigationContainer>
   );
