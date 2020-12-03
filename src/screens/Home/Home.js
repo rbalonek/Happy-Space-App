@@ -18,6 +18,7 @@ const HomeScreen = ({ navigation }) => {
         title="See Dad Jokes!"
         onPress={() => navigation.navigate("DadJokes")}
       />
+      <Button title="To Do List" onPress={() => navigation.navigate("ToDo")} />
     </View>
   );
 };
