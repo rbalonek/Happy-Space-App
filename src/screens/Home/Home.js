@@ -19,6 +19,11 @@ const HomeScreen = ({ navigation }) => {
         onPress={() => navigation.navigate("DadJokes")}
       />
       <Button title="To Do List" onPress={() => navigation.navigate("ToDo")} />
+      <Button
+        title="StorageTwo"
+        onPress={() => navigation.navigate("StorageTwo")}
+      />
+      <Button title="Storage" onPress={() => navigation.navigate("Storage")} />
     </View>
   );
 };
