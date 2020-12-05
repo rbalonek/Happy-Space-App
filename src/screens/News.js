@@ -4,7 +4,6 @@ import NewsCard from "../components/NewsCard";
 import newAPI from "../../apis/News";
 
 const News = ({ navigation }) => {
-  // const [news, setNews] = useState([])
   const [news, setNews] = useState([]);
 
   useEffect(() => {

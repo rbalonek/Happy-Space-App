@@ -21,7 +21,7 @@ const HomeScreen = ({ navigation }) => {
       <Button title="Bored?" onPress={() => navigation.navigate("Bored")} />
       <Button
         title="This Day In History"
-        onPress={() => navigation.navigate("ThisDayHistory")}
+        onPress={() => navigation.navigate("This Day in History")}
       />
     </View>
   );
