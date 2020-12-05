@@ -136,10 +136,9 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   historyContainer: {
-    // backgroundColor: "#fff",
     backgroundColor: "#e2daee",
     position: "relative",
-    top: -20,
+    top: -10,
     padding: 20,
     borderRadius: 10,
     width: "90%",
