@@ -18,7 +18,7 @@ const App = () => {
         <Stack.Screen name="News" component={News} />
         <Stack.Screen name="DadJokes" component={DadJokes} />
         <Stack.Screen name="Bored" component={Bored} />
-        <Stack.Screen name="ThisDayHistory" component={ThisDayHistory} />
+        <Stack.Screen name="This Day in History" component={ThisDayHistory} />
       </Stack.Navigator>
     </NavigationContainer>
   );

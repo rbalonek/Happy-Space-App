@@ -8,9 +8,10 @@ import {
   Image,
   Button,
 } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
-export default function DadJokes({ navigation }) {
-  let [joke, setJoke] = React.useState("Click GET JOKE!");
+export default function DadJokes() {
+  let [joke, setJoke] = React.useState("You kids like jokes?");
 
   const fetchApiCall = () => {
     fetch("https://icanhazdadjoke.com/", {
@@ -31,15 +32,19 @@ export default function DadJokes({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Random Dad Joke App</Text>
-      <TouchableHighlight onPress={fetchApiCall}>
-        <View style={styles.button}>
-          <Text style={styles.buttonText}> GET Joke!</Text>
-        </View>
-      </TouchableHighlight>
+      <Image style={styles.img} source={require("../../assets/DadLawn.jpg")} />
+
       <StatusBar style="auto" />
       <View style={styles.jokeContainer}>
         <Text style={styles.joke}>"{joke}"</Text>
+      </View>
+
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity onPress={fetchApiCall}>
+          <View style={styles.button}>
+            <Text style={styles.buttonText}> GET Joke!</Text>
+          </View>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -48,36 +53,49 @@ export default function DadJokes({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#aaa",
+    backgroundColor: "#FFF",
     alignItems: "center",
     justifyContent: "center",
   },
-  title: {
+  buttonContainer: {
     position: "absolute",
-    top: 100,
-    fontSize: 35,
-    color: "#fff",
+    bottom: 0,
+    width: "100%",
   },
   button: {
+    zIndex: 999,
     padding: 20,
     paddingLeft: 100,
     paddingRight: 100,
     marginVertical: 25,
     backgroundColor: "#0645AD",
+    width: "100%",
   },
   buttonText: {
     color: "#FFF",
+    textAlign: "center",
+    fontSize: 20,
   },
   jokeContainer: {
-    backgroundColor: "#fff",
+    backgroundColor: "#00aabb",
     position: "relative",
-    bottom: -100,
+    top: "-35%",
     padding: 20,
-    borderRadius: 5,
+    borderRadius: 50,
+    left: -55,
+    width: "60%",
   },
   joke: {
-    fontSize: 25,
-    color: "black",
+    fontSize: 15,
+    color: "#FFF",
     padding: 10,
+    fontWeight: "bold",
+  },
+  img: {
+    position: "absolute",
+    flex: 1,
+    zIndex: -1,
+    width: "100%",
+    top: 0,
   },
 });
