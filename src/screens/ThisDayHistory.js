@@ -52,8 +52,6 @@ export default function ThisDayHistory() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>HISTORY</Text>
-
       <StatusBar style="auto" />
 
       {date ? (
@@ -120,11 +118,13 @@ const styles = StyleSheet.create({
     top: 10,
     fontSize: 35,
     color: "#fff",
+    width: "100%",
+    backgroundColor: "gold",
+    textAlign: "center",
   },
   buttonContainer: {
     position: "absolute",
-    // bottom: 25,
-    bottom: "4%",
+    bottom: "14%",
     width: "100%",
     alignItems: "center",
     justifyContent: "center",
@@ -140,6 +140,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.7,
     shadowRadius: 8,
     width: "100%",
+    borderRadius: 80,
   },
   buttonText: {
     color: "#FFF",
@@ -147,10 +148,9 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   historyContainer: {
-    // backgroundColor: "#e2daee",
     backgroundColor: "#000",
     position: "relative",
-    top: -10,
+    top: "-15%",
     padding: 20,
     borderRadius: 10,
     width: "90%",
