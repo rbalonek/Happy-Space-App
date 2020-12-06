@@ -6,7 +6,7 @@ import "@expo/match-media";
 
 export default function Bored() {
   let [idea, setIdea] = useState("");
-  //http://www.boredapi.com/api/activity?type=recreational //education //social //relaxation //cooking
+  const [animation, setAnimation] = useState("flipInY");
 
   const fetchApiCallRecreational = () => {
     fetch("https://www.boredapi.com/api/activity?type=recreational", {
@@ -18,6 +18,8 @@ export default function Bored() {
       .then((response) => response.json())
       .then((response) => {
         setIdea(response.activity);
+        setAnimation("lightSpeedOut");
+        setAnimation("flipInY");
       })
       .catch((err) => {
         console.log(err);
@@ -33,6 +35,8 @@ export default function Bored() {
       .then((response) => response.json())
       .then((response) => {
         setIdea(response.activity);
+        setAnimation("lightSpeedOut");
+        setAnimation("flipInY");
       })
       .catch((err) => {
         console.log(err);
@@ -49,6 +53,8 @@ export default function Bored() {
       .then((response) => response.json())
       .then((response) => {
         setIdea(response.activity);
+        setAnimation("lightSpeedOut");
+        setAnimation("flipInY");
       })
       .catch((err) => {
         console.log(err);
@@ -65,18 +71,12 @@ export default function Bored() {
       .then((response) => response.json())
       .then((response) => {
         setIdea(response.activity);
+        setAnimation("lightSpeedOut");
+        setAnimation("flipInY");
       })
       .catch((err) => {
         console.log(err);
       });
-  };
-  const fadeIn = {
-    from: {
-      opacity: 0,
-    },
-    to: {
-      opacity: 1,
-    },
   };
 
   return (
@@ -112,7 +112,7 @@ export default function Bored() {
       <StatusBar style="auto" />
 
       {idea ? (
-        <Animatable.View style={styles.ideaContainer} animation="flipInY">
+        <Animatable.View style={styles.ideaContainer} animation={animation}>
           <Text style={styles.idea}>"{idea}"</Text>
         </Animatable.View>
       ) : (
