@@ -1,10 +1,13 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import * as Animatable from "react-native-animatable";
+import "@expo/match-media";
 
 export default function DadJokes() {
   let [joke, setJoke] = React.useState("You kids like jokes?");
+  const [animation, setAnimation] = useState("bounceIn");
 
   const fetchApiCall = () => {
     fetch("https://icanhazdadjoke.com/", {
@@ -15,7 +18,8 @@ export default function DadJokes() {
     })
       .then((response) => response.json())
       .then((response) => {
-        // console.log(response.joke);
+        setAnimation("lightSpeedOut");
+        setAnimation("bounceInRight");
         setJoke(response.joke);
       })
       .catch((err) => {
@@ -28,9 +32,9 @@ export default function DadJokes() {
       <Image style={styles.img} source={require("../../assets/DadLawn.jpg")} />
 
       <StatusBar style="auto" />
-      <View style={styles.jokeContainer}>
+      <Animatable.View style={styles.jokeContainer} animation={animation}>
         <Text style={styles.joke}>"{joke}"</Text>
-      </View>
+      </Animatable.View>
 
       <View style={styles.buttonContainer}>
         <TouchableOpacity onPress={fetchApiCall}>

@@ -1,19 +1,12 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableHighlight,
-  Image,
-  Button,
-  Linking,
-} from "react-native";
+import { StyleSheet, Text, View, Linking } from "react-native";
 import * as Animatable from "react-native-animatable";
 import "@expo/match-media";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 export default function ThisDayHistory() {
+  const [animation, setAnimation] = useState("zoomInLeft");
   const [description, setDescription] = useState("Click for Idea!");
   const [date, setDate] = useState("");
   const [wiki, setWiki] = useState("");
@@ -37,6 +30,8 @@ export default function ThisDayHistory() {
       .then((response) => {
         const length = response.events.length;
         const randomNum = getRandomInt(length);
+        setAnimation("lightSpeedOut");
+        setAnimation("flipInX");
         setDate(response.events[randomNum].year);
         setDescription(response.events[randomNum].description);
         setWiki(response.events[randomNum].wikipedia[0].wikipedia);
@@ -64,10 +59,13 @@ export default function ThisDayHistory() {
       {date ? (
         <Animatable.View
           style={styles.historyContainer}
-          animation="slideInLeft"
+          animation={animation}
+          easing="ease-in"
         >
           {date ? (
-            <Text style={[styles.year, styles.text]}>In the year {date},</Text>
+            <Text style={[styles.year, styles.text]}>
+              On {month}/{day}/{date}:
+            </Text>
           ) : (
             <Text></Text>
           )}
