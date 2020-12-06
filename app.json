@@ -15,8 +15,7 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true,
-      "bundleidentifier": "com.robertbalonek.happyplace"
+      "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
