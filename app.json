@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "myReactNativeProject",
-    "slug": "myReactNativeProject",
+    "name": "HappyPlace",
+    "slug": "HappyPlace",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -13,11 +13,10 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleidentifier": "com.robertbalonek.happyplace"
     },
     "android": {
       "adaptiveIcon": {
