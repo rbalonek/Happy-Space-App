@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import * as Animatable from "react-native-animatable";
 import "@expo/match-media";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 export default function ThisDayHistory() {
   const [description, setDescription] = useState("Click for Idea!");
@@ -66,17 +67,22 @@ export default function ThisDayHistory() {
           animation="slideInLeft"
         >
           {date ? (
-            <Text style={styles.year}>In the year {date},</Text>
+            <Text style={[styles.year, styles.text]}>In the year {date},</Text>
           ) : (
             <Text></Text>
           )}
 
-          <Animatable.Text style={styles.description} animation={fadeIn}>
+          <Animatable.Text
+            style={[styles.description, styles.text]}
+            animation={fadeIn}
+          >
             {description}
           </Animatable.Text>
           {wiki ? (
             <>
-              <Text style={styles.wikiTitle}>Learn more at:</Text>
+              <Text style={[styles.wikiTitle, styles.text]}>
+                Learn more at:
+              </Text>
               <Text
                 onPress={() => {
                   Linking.openURL(`${wiki}`);
@@ -93,12 +99,12 @@ export default function ThisDayHistory() {
       ) : (
         <Text></Text>
       )}
-      <Animatable.View animation="zoomIn">
-        <TouchableHighlight onPress={fetchApiCall}>
+      <Animatable.View animation="zoomIn" style={styles.buttonContainer}>
+        <TouchableOpacity onPress={fetchApiCall}>
           <View style={styles.button}>
             <Text style={styles.buttonText}>Learn Some History!</Text>
           </View>
-        </TouchableHighlight>
+        </TouchableOpacity>
       </Animatable.View>
     </View>
   );
@@ -107,7 +113,6 @@ export default function ThisDayHistory() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // backgroundColor: "#aaa",
     backgroundColor: "#4b357a",
     alignItems: "center",
     justifyContent: "center",
@@ -117,6 +122,14 @@ const styles = StyleSheet.create({
     top: 10,
     fontSize: 35,
     color: "#fff",
+  },
+  buttonContainer: {
+    position: "absolute",
+    // bottom: 25,
+    bottom: "4%",
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "center",
   },
   button: {
     position: "relative",
@@ -128,7 +141,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0.5, height: 1 },
     shadowOpacity: 0.7,
     shadowRadius: 8,
-    bottom: -10,
+    width: "100%",
   },
   buttonText: {
     color: "#FFF",
@@ -136,7 +149,8 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   historyContainer: {
-    backgroundColor: "#e2daee",
+    // backgroundColor: "#e2daee",
+    backgroundColor: "#000",
     position: "relative",
     top: -10,
     padding: 20,
@@ -144,10 +158,13 @@ const styles = StyleSheet.create({
     width: "90%",
     height: "65%",
     justifyContent: "center",
-    shadowColor: "#000",
+    shadowColor: "lightblue",
     shadowOffset: { width: 0.5, height: 1 },
     shadowOpacity: 0.7,
     shadowRadius: 5,
+  },
+  text: {
+    color: "white",
   },
   year: {
     fontSize: 20,
@@ -171,7 +188,7 @@ const styles = StyleSheet.create({
     bottom: 5,
     padding: 5,
     fontSize: 10,
-    color: "darkblue",
+    color: "lightblue",
     width: "100%",
   },
 });
