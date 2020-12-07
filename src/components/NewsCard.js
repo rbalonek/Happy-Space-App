@@ -32,7 +32,7 @@ const NewsCard = ({ item }) => {
 
 const styles = StyleSheet.create({
   cardView: {
-    backgroundColor: "white",
+    backgroundColor: "black", // "#aad7e4",
     margin: width * 0.04,
     borderRadius: width * 0.05,
     shadowColor: "#000",
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   title: {
     marginHorizontal: width * 0.05,
     margin: width * 0.03,
-    color: "black",
+    color: "white",
     fontSize: 20,
     fontWeight: "bold",
   },

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, FlatList } from "react-native";
+import { View, FlatList, StyleSheet } from "react-native";
 import NewsCard from "../components/NewsCard";
 import newAPI from "../../apis/News";
 
@@ -26,7 +26,7 @@ const News = () => {
   }
 
   return (
-    <View>
+    <View style={styles.container}>
       <FlatList
         data={news.articles}
         keyExtractor={(item, index) => "key" + index}
@@ -37,5 +37,11 @@ const News = () => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: "red", //#c9aa88",
+  },
+});
 
 export default News;

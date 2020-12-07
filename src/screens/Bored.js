@@ -167,7 +167,7 @@ const styles = StyleSheet.create({
     zIndex: 999,
     backgroundColor: "green",
     position: "relative",
-    bottom: "100%",
+    bottom: "80%",
     padding: 20,
     borderRadius: 5,
     height: "40%",

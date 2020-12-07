@@ -77,7 +77,7 @@ const HomeScreen = ({ navigation }) => {
 };
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#e0dcb5",
+    backgroundColor: "#c9aa88", //"#e0dcb5",
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
