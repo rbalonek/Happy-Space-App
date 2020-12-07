@@ -13,12 +13,48 @@ const Stack = createStackNavigator();
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Navigator
+      // screenOptions={{
+      //   headerShown: false,
+      // }}
+      >
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen name="News" component={News} />
         <Stack.Screen name="DadJokes" component={DadJokes} />
-        <Stack.Screen name="Bored" component={Bored} />
-        <Stack.Screen name="This Day in History" component={ThisDayHistory} />
+        <Stack.Screen
+          name="Bored"
+          component={Bored}
+          options={{
+            headerTitle: "",
+            headerStyle: {
+              backgroundColor: "green",
+            },
+            headerTitleStyle: {
+              color: "white",
+            },
+            headerBackTitleStyle: {
+              color: "white",
+            },
+            headerTintColor: "white",
+          }}
+        />
+        <Stack.Screen
+          name="This Day in History"
+          component={ThisDayHistory}
+          options={{
+            headerStyle: {
+              backgroundColor: "#4b357a",
+            },
+            headerTitleStyle: {
+              color: "white",
+            },
+            headerTintColor: "white",
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
