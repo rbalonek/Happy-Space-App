@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, Button } from "react-native";
+import { View, Text, StyleSheet, SafeAreaView } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 const HomeScreen = ({ navigation }) => {
@@ -28,51 +28,51 @@ const HomeScreen = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.titleView}>
         <Text style={styles.title}>Welcome to Happy Space</Text>
       </View>
+
+      <View style={styles.buttonsTop}>
+        <TouchableOpacity
+          style={styles.button}
+          title="Go to News"
+          onPress={() => navigation.navigate("News")}
+        >
+          <Text style={styles.buttonText}>News</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.button}
+          title="This Day In History"
+          onPress={() => navigation.navigate("This Day in History")}
+        >
+          <Text style={styles.buttonText}>This Day In History</Text>
+        </TouchableOpacity>
+      </View>
+
       <View style={styles.quotes}>
         <Text style={styles.quote}>"{quote}"</Text>
         <Text style={styles.author}>-{author}</Text>
       </View>
-      <View style={styles.allButtons}>
-        <View style={styles.buttonsTop}>
-          <TouchableOpacity
-            style={styles.button}
-            title="Go to News"
-            onPress={() => navigation.navigate("News")}
-          >
-            <Text style={styles.buttonText}>News</Text>
-          </TouchableOpacity>
 
-          <TouchableOpacity
-            style={styles.button}
-            title="This Day In History"
-            onPress={() => navigation.navigate("This Day in History")}
-          >
-            <Text style={styles.buttonText}>This Day In History</Text>
-          </TouchableOpacity>
-        </View>
-
-        <View style={styles.buttonsTop}>
-          <TouchableOpacity
-            style={styles.button}
-            title="See Dad Jokes!"
-            onPress={() => navigation.navigate("DadJokes")}
-          >
-            <Text style={styles.buttonText}>Dad Jokes</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.button}
-            title="Bored?"
-            onPress={() => navigation.navigate("Bored")}
-          >
-            <Text style={styles.buttonText}>Bored?</Text>
-          </TouchableOpacity>
-        </View>
+      <View style={styles.buttonsBottom}>
+        <TouchableOpacity
+          style={styles.button}
+          title="See Dad Jokes!"
+          onPress={() => navigation.navigate("DadJokes")}
+        >
+          <Text style={styles.buttonText}>Dad Jokes</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.button}
+          title="Bored?"
+          onPress={() => navigation.navigate("Bored")}
+        >
+          <Text style={styles.buttonText}>Bored?</Text>
+        </TouchableOpacity>
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 const styles = StyleSheet.create({
@@ -99,6 +99,8 @@ const styles = StyleSheet.create({
     color: "#000",
     fontSize: 25,
     fontFamily: "Baskerville-SemiBold",
+    position: "relative",
+    top: "20%",
   },
   quotes: {
     position: "relative",
@@ -118,7 +120,8 @@ const styles = StyleSheet.create({
     bottom: "5%",
   },
   buttonsTop: {
-    position: "relative",
+    position: "absolute",
+    top: 150,
     display: "flex",
     flexDirection: "row",
     flexWrap: "wrap",
@@ -126,7 +129,8 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   buttonsBottom: {
-    position: "relative",
+    position: "absolute",
+    bottom: 30,
     display: "flex",
     flexDirection: "row",
     flexWrap: "wrap",
