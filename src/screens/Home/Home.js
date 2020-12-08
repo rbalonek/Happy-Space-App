@@ -36,10 +36,10 @@ const HomeScreen = ({ navigation }) => {
       <View style={styles.buttonsTop}>
         <TouchableOpacity
           style={styles.button}
-          title="Go to News"
-          onPress={() => navigation.navigate("News")}
+          title="Go to Decisions"
+          onPress={() => navigation.navigate("Decisions")}
         >
-          <Text style={styles.buttonText}>News</Text>
+          <Text style={styles.buttonText}>Decisions</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
@@ -66,8 +66,8 @@ const HomeScreen = ({ navigation }) => {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.button}
-          title="Bored?"
-          onPress={() => navigation.navigate("Bored")}
+          title="Decisions"
+          onPress={() => navigation.navigate("Decisions")}
         >
           <Text style={styles.buttonText}>Bored?</Text>
         </TouchableOpacity>
