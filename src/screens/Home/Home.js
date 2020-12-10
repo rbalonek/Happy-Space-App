@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, SafeAreaView } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 const HomeScreen = ({ navigation }) => {
-  const [quote, setQuote] = useState("");
+  const [quote, setQuote] = useState("Loading...");
   const [author, setAuthor] = useState("");
 
   useEffect(() => {
@@ -66,8 +66,8 @@ const HomeScreen = ({ navigation }) => {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.button}
-          title="Decisions"
-          onPress={() => navigation.navigate("Decisions")}
+          title="Bored"
+          onPress={() => navigation.navigate("Bored")}
         >
           <Text style={styles.buttonText}>Bored?</Text>
         </TouchableOpacity>
