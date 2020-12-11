@@ -4,7 +4,7 @@ import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
 import * as Animatable from "react-native-animatable";
 import "@expo/match-media";
 
-export default function Decisions() {
+export default function AdviceFromCats() {
   const [decision, setDecision] = useState("");
   const [advice, setAdvice] = useState("");
   const [kitten, setKitten] = useState(null);
@@ -125,14 +125,14 @@ export default function Decisions() {
         />
       </Animatable.View>
 
-      <View style={styles.buttonContainer}>
+      <Animatable.View style={styles.buttonContainer} animation="zoomIn">
         <TouchableOpacity style={styles.button} onPress={buttonPress}>
           <Text style={styles.buttonText}>Advice</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={yesNoButton}>
           <Text style={styles.buttonText}>Yes or No?</Text>
         </TouchableOpacity>
-      </View>
+      </Animatable.View>
       <StatusBar style="auto" />
     </View>
   );
@@ -145,12 +145,10 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "space-around",
     backgroundColor: "white",
-    // zIndex: 1,
   },
   adviceWordBubble: {
     position: "relative",
-    top: "-30%",
-    // right: "-13%",
+    top: "-29%",
     height: 290,
     zIndex: -1,
   },
@@ -199,7 +197,7 @@ const styles = StyleSheet.create({
     height: "50%",
     width: 200,
     position: "relative",
-    bottom: "5%",
+    bottom: "-4%",
     borderRadius: 50,
     zIndex: 999,
   },

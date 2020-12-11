@@ -36,10 +36,10 @@ const HomeScreen = ({ navigation }) => {
       <View style={styles.buttonsTop}>
         <TouchableOpacity
           style={styles.button}
-          title="Go to Decisions"
-          onPress={() => navigation.navigate("Decisions")}
+          title="Advice from Cats"
+          onPress={() => navigation.navigate("Advice From Cats")}
         >
-          <Text style={styles.buttonText}>Decisions</Text>
+          <Text style={styles.buttonText}>Advice From Cats</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
@@ -60,7 +60,7 @@ const HomeScreen = ({ navigation }) => {
         <TouchableOpacity
           style={styles.button}
           title="See Dad Jokes!"
-          onPress={() => navigation.navigate("DadJokes")}
+          onPress={() => navigation.navigate("Dad Jokes")}
         >
           <Text style={styles.buttonText}>Dad Jokes</Text>
         </TouchableOpacity>
@@ -107,7 +107,6 @@ const styles = StyleSheet.create({
     top: "0%",
     paddingLeft: 10,
     paddingRight: 10,
-    fontFamily: "Didot",
   },
   quote: {
     fontSize: 20,
@@ -130,7 +129,7 @@ const styles = StyleSheet.create({
   },
   buttonsBottom: {
     position: "absolute",
-    bottom: 30,
+    bottom: "10%",
     display: "flex",
     flexDirection: "row",
     flexWrap: "wrap",
@@ -139,7 +138,7 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: "#a2c6d6",
-    height: 60,
+    height: 80,
     width: 150,
     justifyContent: "center",
     alignItems: "center",

@@ -3,7 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import HomeScreen from "./src/screens/Home/Home";
-import Decisions from "./src/screens/Decisions";
+import AdviceFromCats from "./src/screens/AdviceFromCats";
 import DadJokes from "./src/screens/DadJokes";
 import Bored from "./src/screens/Bored";
 import ThisDayHistory from "./src/screens/ThisDayHistory";
@@ -24,8 +24,8 @@ const App = () => {
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="Decisions"
-          component={Decisions}
+          name="Advice From Cats"
+          component={AdviceFromCats}
           options={{
             headerStyle: {
               backgroundColor: "black",
@@ -36,12 +36,12 @@ const App = () => {
             headerTintColor: "white",
           }}
         />
-        <Stack.Screen name="DadJokes" component={DadJokes} />
+        <Stack.Screen name="Dad Jokes" component={DadJokes} />
         <Stack.Screen
           name="Bored"
           component={Bored}
           options={{
-            headerTitle: "",
+            headerTitle: "Find some Inspiration",
             headerStyle: {
               backgroundColor: "green",
             },
