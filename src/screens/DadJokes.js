@@ -35,6 +35,10 @@ export default function DadJokes() {
       <Animatable.View style={styles.jokeContainer} animation={animation}>
         <Text style={styles.joke}>"{joke}"</Text>
       </Animatable.View>
+      <Animatable.View
+        style={styles.jokeBubble}
+        animation={animation}
+      ></Animatable.View>
 
       <View style={styles.buttonContainer}>
         <TouchableOpacity onPress={fetchApiCall}>
@@ -90,6 +94,16 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 5, height: 5 },
     shadowColor: "black",
     shadowOpacity: 0.5,
+  },
+  jokeBubble: {
+    position: "relative",
+    right: "-13%",
+    top: "-37%",
+    height: 50,
+    width: 50,
+    backgroundColor: "#00aabb",
+    borderTopRightRadius: 100,
+    borderBottomLeftRadius: 100,
   },
   joke: {
     fontSize: 15,

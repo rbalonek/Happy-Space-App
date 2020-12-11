@@ -76,9 +76,7 @@ export default function ThisDayHistory() {
           </Animatable.Text>
           {wiki ? (
             <>
-              <Text style={[styles.wikiTitle, styles.text]}>
-                Learn more at:
-              </Text>
+              <Text style={[styles.wikiTitle, styles.text]}>Learn more:</Text>
               <Text
                 onPress={() => {
                   Linking.openURL(`${wiki}`);

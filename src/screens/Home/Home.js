@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, SafeAreaView } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 const HomeScreen = ({ navigation }) => {
-  const [quote, setQuote] = useState("");
+  const [quote, setQuote] = useState("Loading...");
   const [author, setAuthor] = useState("");
 
   useEffect(() => {
@@ -36,10 +36,10 @@ const HomeScreen = ({ navigation }) => {
       <View style={styles.buttonsTop}>
         <TouchableOpacity
           style={styles.button}
-          title="Go to News"
-          onPress={() => navigation.navigate("News")}
+          title="Advice from Cats"
+          onPress={() => navigation.navigate("Advice From Cats")}
         >
-          <Text style={styles.buttonText}>News</Text>
+          <Text style={styles.buttonText}>Advice From Cats</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
@@ -60,16 +60,16 @@ const HomeScreen = ({ navigation }) => {
         <TouchableOpacity
           style={styles.button}
           title="See Dad Jokes!"
-          onPress={() => navigation.navigate("DadJokes")}
+          onPress={() => navigation.navigate("Dad Jokes")}
         >
           <Text style={styles.buttonText}>Dad Jokes</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.button}
-          title="Bored?"
+          title="Bored"
           onPress={() => navigation.navigate("Bored")}
         >
-          <Text style={styles.buttonText}>Bored?</Text>
+          <Text style={styles.buttonText}>Inspiration</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -77,13 +77,13 @@ const HomeScreen = ({ navigation }) => {
 };
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#e0dcb5",
+    backgroundColor: "#A6D9F7",
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
   },
   titleView: {
-    backgroundColor: "#aad7e4",
+    backgroundColor: "#312F2F",
     width: "100%",
     height: 100,
     position: "absolute",
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
   },
   title: {
-    color: "#000",
+    color: "#A6D9F7",
     fontSize: 25,
     fontFamily: "Baskerville-SemiBold",
     position: "relative",
@@ -107,7 +107,6 @@ const styles = StyleSheet.create({
     top: "0%",
     paddingLeft: 10,
     paddingRight: 10,
-    fontFamily: "Didot",
   },
   quote: {
     fontSize: 20,
@@ -130,7 +129,7 @@ const styles = StyleSheet.create({
   },
   buttonsBottom: {
     position: "absolute",
-    bottom: 30,
+    bottom: "10%",
     display: "flex",
     flexDirection: "row",
     flexWrap: "wrap",
@@ -138,21 +137,21 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   button: {
-    backgroundColor: "#a2c6d6",
-    height: 60,
+    backgroundColor: "#A4B0F5",
+    height: 90,
     width: 150,
     justifyContent: "center",
     alignItems: "center",
     borderWidth: 0.5,
     marginBottom: 20,
     borderBottomWidth: 4,
-    borderRadius: 5,
+    borderRadius: 20,
     shadowOffset: { width: 5, height: 5 },
-    shadowColor: "black",
+    shadowColor: "#312F2F",
     shadowOpacity: 1.0,
   },
   buttonText: {
-    color: "#000",
+    color: "#312F2F",
     fontWeight: "bold",
   },
 });
