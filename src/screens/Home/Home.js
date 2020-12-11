@@ -10,7 +10,6 @@ const HomeScreen = ({ navigation }) => {
   const [author, setAuthor] = useState("");
 
   const tallerPhone = useMediaQuery({ minWidth: 410 });
-  // const shorterPhone = useMediaQuery({ maxWidth: 410 });
 
   useEffect(() => {
     fetchApiCall();
