@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
   jokeBubble: {
     position: "relative",
     right: "-13%",
-    top: "-40%",
+    top: "-37%",
     height: 50,
     width: 50,
     backgroundColor: "#00aabb",

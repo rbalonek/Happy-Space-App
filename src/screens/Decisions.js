@@ -67,7 +67,13 @@ export default function Decisions() {
   };
 
   const buttonPress = () => {
+    setYesNoAnimation("fadeOut");
     fetchAdvice();
+    fetchKitten();
+  };
+
+  const yesNoButton = () => {
+    setAdviceAnimation("fadeOut");
     fetchDecisions();
     fetchKitten();
   };
@@ -76,18 +82,36 @@ export default function Decisions() {
     <View style={styles.container}>
       <View style={styles.yesNoContainer}>
         {decision ? (
-          <View>
-            <Text>Your decision:</Text>
-            <Animatable.Text style={styles.yesNo} animation={yesNoAnimation}>
-              {decision}
-            </Animatable.Text>
-          </View>
+          <Animatable.View animation={yesNoAnimation}>
+            <Animatable.Text style={styles.yesNo}>{decision}</Animatable.Text>
+            <Image
+              style={styles.yesNoWordBubble}
+              source={require("../../assets/WordBubbleSide.png")}
+            />
+          </Animatable.View>
         ) : (
           <View>
-            <Text>Ask Anything (yes / no)</Text>
+            <Text></Text>
           </View>
         )}
       </View>
+
+      {advice ? (
+        <Animatable.View
+          style={styles.adviceContainer}
+          animation={adviceAnimation}
+        >
+          <Text style={styles.adviceText}>{advice}</Text>
+          <Image
+            style={styles.adviceWordBubble}
+            source={require("../../assets/WordBubbleSide.png")}
+          />
+        </Animatable.View>
+      ) : (
+        <View style={styles.advice}>
+          <Text></Text>
+        </View>
+      )}
 
       <Animatable.View
         style={styles.kittenContainer}
@@ -101,20 +125,12 @@ export default function Decisions() {
         />
       </Animatable.View>
 
-      {advice ? (
-        <Animatable.View style={styles.advice} animation={adviceAnimation}>
-          <Text> Advice:</Text>
-          <Text>{advice}</Text>
-        </Animatable.View>
-      ) : (
-        <View style={styles.advice}>
-          <Text></Text>
-        </View>
-      )}
-
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.button} onPress={buttonPress}>
-          <Text style={styles.buttonText}>Decisions</Text>
+          <Text style={styles.buttonText}>Advice</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={yesNoButton}>
+          <Text style={styles.buttonText}>Yes or No?</Text>
         </TouchableOpacity>
       </View>
       <StatusBar style="auto" />
@@ -126,31 +142,66 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
+    flexDirection: "column",
     justifyContent: "space-around",
+    backgroundColor: "white",
+    // zIndex: 1,
+  },
+  adviceWordBubble: {
+    position: "relative",
+    top: "-30%",
+    // right: "-13%",
+    height: 290,
+    zIndex: -1,
+  },
+  adviceContainer: {
+    position: "relative",
+    top: "0%",
+    width: "45%",
+    alignItems: "center",
+    justifyContent: "center",
+    zIndex: 998,
+  },
+  adviceText: {
+    color: "black",
+    position: "relative",
+    top: "20%",
+    right: "-0%",
+  },
+
+  yesNoWordBubble: {
+    position: "relative",
   },
   yesNoContainer: {
     position: "relative",
+    alignItems: "center",
+    justifyContent: "center",
+    zIndex: 999,
+    top: "0%",
   },
   yesNo: {
-    fontSize: 30,
-  },
-  advice: {
+    fontSize: 50,
     position: "relative",
-    bottom: 100,
-    paddingLeft: 20,
-    paddingRight: 20,
+    top: "45%",
+    right: "-20%",
+    zIndex: 999,
   },
+
   kittenContainer: {
+    position: "relative",
+    bottom: "0%",
     shadowOffset: { width: 5, height: 5 },
     shadowColor: "black",
     shadowOpacity: 1,
+    zIndex: 999,
   },
   kittens: {
-    height: 200,
+    height: "50%",
     width: 200,
     position: "relative",
-    bottom: 60,
+    bottom: "5%",
     borderRadius: 50,
+    zIndex: 999,
   },
   buttonContainer: {
     position: "absolute",
@@ -158,18 +209,23 @@ const styles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
     justifyContent: "center",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-around",
+    zIndex: 999,
   },
   button: {
     position: "relative",
-    padding: 20,
-    paddingLeft: 100,
-    paddingRight: 100,
+    padding: 10,
+    paddingLeft: 30,
+    paddingRight: 30,
     backgroundColor: "#0645AD",
     borderBottomWidth: 4,
     borderRadius: 5,
     shadowOffset: { width: 5, height: 5 },
     shadowColor: "black",
     shadowOpacity: 1.0,
+    zIndex: 999,
   },
   buttonText: {
     color: "#FFF",
