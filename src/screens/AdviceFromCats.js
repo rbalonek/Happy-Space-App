@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
 import * as Animatable from "react-native-animatable";
 import "@expo/match-media";
+import { useMediaQuery } from "react-responsive";
 
 export default function AdviceFromCats() {
   const [decision, setDecision] = useState("");
@@ -11,6 +12,9 @@ export default function AdviceFromCats() {
   const [adviceAnimation, setAdviceAnimation] = useState("flipInY");
   const [kittenAnimation, setKittenAnimation] = useState("flipInY");
   const [yesNoAnimation, setYesNoAnimation] = useState("bounceInUp");
+
+  const tallerPhone = useMediaQuery({ minWidth: 410 });
+  const shorterPhone = useMediaQuery({ maxWidth: 410 });
 
   const fetchDecisions = () => {
     fetch("https://yesno.wtf/api", {
@@ -94,16 +98,34 @@ export default function AdviceFromCats() {
       </Animatable.View>
 
       {decision ? (
-        <Animatable.View
-          style={styles.yesNoContainer}
-          animation={yesNoAnimation}
-        >
-          <Animatable.Text style={styles.yesNo}>{decision}</Animatable.Text>
-          <Image
-            style={styles.yesNoWordBubble}
-            source={require("../../assets/wordBubble.png")}
-          />
-        </Animatable.View>
+        <View>
+          {tallerPhone && (
+            <Animatable.View
+              style={styles.yesNoContainer}
+              animation={yesNoAnimation}
+            >
+              <Animatable.Text style={styles.yesNo}>{decision}</Animatable.Text>
+              <Image
+                style={styles.yesNoWordBubble}
+                source={require("../../assets/wordBubble.png")}
+              />
+            </Animatable.View>
+          )}
+          {shorterPhone && (
+            <Animatable.View
+              style={styles.yesNoContainerShorter}
+              animation={yesNoAnimation}
+            >
+              <Animatable.Text style={styles.yesNoShorter}>
+                {decision}
+              </Animatable.Text>
+              <Image
+                style={styles.yesNoWordBubbleShorter}
+                source={require("../../assets/wordBubble.png")}
+              />
+            </Animatable.View>
+          )}
+        </View>
       ) : (
         <View>
           <Text style={styles.AdviceNegSpace}></Text>
@@ -111,16 +133,32 @@ export default function AdviceFromCats() {
       )}
 
       {advice ? (
-        <Animatable.View
-          style={styles.adviceContainer}
-          animation={adviceAnimation}
-        >
-          <Text style={styles.adviceText}>{advice}</Text>
-          <Image
-            style={styles.adviceWordBubble}
-            source={require("../../assets/wordBubble.png")}
-          />
-        </Animatable.View>
+        <View>
+          {tallerPhone && (
+            <Animatable.View
+              style={styles.adviceContainer}
+              animation={adviceAnimation}
+            >
+              <Text style={styles.adviceText}>{advice}</Text>
+              <Image
+                style={styles.adviceWordBubble}
+                source={require("../../assets/wordBubble.png")}
+              />
+            </Animatable.View>
+          )}
+          {shorterPhone && (
+            <Animatable.View
+              style={styles.adviceContainerShorter}
+              animation={adviceAnimation}
+            >
+              <Text style={styles.adviceTextShorter}>{advice}</Text>
+              <Image
+                style={styles.adviceWordBubbleShorter}
+                source={require("../../assets/wordBubble.png")}
+              />
+            </Animatable.View>
+          )}
+        </View>
       ) : (
         <View>
           <Text style={styles.decisionNegSpace}></Text>
@@ -201,7 +239,7 @@ const styles = StyleSheet.create({
   adviceContainer: {
     position: "relative",
     top: "0%",
-    width: "45%",
+    width: "65%",
     alignItems: "center",
     justifyContent: "center",
     zIndex: 998,
@@ -209,14 +247,14 @@ const styles = StyleSheet.create({
   adviceWordBubble: {
     transform: [{ scaleY: -1 }],
     position: "relative",
-    bottom: "65%",
+    bottom: "90%",
     zIndex: -1,
   },
   adviceText: {
     color: "black",
     fontSize: 20,
     position: "relative",
-    top: "-8%",
+    top: "-33%",
     right: "-0%",
   },
 
@@ -248,5 +286,44 @@ const styles = StyleSheet.create({
     color: "#FFF",
     fontSize: 20,
     width: "100%",
+  },
+  yesNoContainerShorter: {
+    position: "relative",
+    alignItems: "center",
+    justifyContent: "center",
+    zIndex: 999,
+    bottom: "-15%",
+  },
+  yesNoWordBubbleShorter: {
+    position: "relative",
+    bottom: "-10%",
+    transform: [{ scaleY: -1 }],
+  },
+  yesNoShorter: {
+    fontSize: 60,
+    position: "relative",
+    bottom: "-65%",
+    zIndex: 999,
+  },
+  adviceContainerShorter: {
+    position: "relative",
+    top: "0%",
+    width: "75%",
+    alignItems: "center",
+    justifyContent: "center",
+    zIndex: 998,
+  },
+  adviceTextShorter: {
+    color: "black",
+    fontSize: 20,
+    position: "relative",
+    top: "8%",
+    right: "-0%",
+  },
+  adviceWordBubbleShorter: {
+    transform: [{ scaleY: -1 }],
+    position: "relative",
+    bottom: "50%",
+    zIndex: -1,
   },
 });
