@@ -2,9 +2,15 @@ import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, SafeAreaView } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
+import "@expo/match-media";
+import { useMediaQuery } from "react-responsive";
+
 const HomeScreen = ({ navigation }) => {
   const [quote, setQuote] = useState("Loading...");
   const [author, setAuthor] = useState("");
+
+  const tallerPhone = useMediaQuery({ minWidth: 410 });
+  // const shorterPhone = useMediaQuery({ maxWidth: 410 });
 
   useEffect(() => {
     fetchApiCall();
@@ -33,45 +39,84 @@ const HomeScreen = ({ navigation }) => {
         <Text style={styles.title}>Welcome to Happy Space</Text>
       </View>
 
-      <View style={styles.buttonsTop}>
-        <TouchableOpacity
-          style={styles.button}
-          title="Advice from Cats"
-          onPress={() => navigation.navigate("Advice From Cats")}
-        >
-          <Text style={styles.buttonText}>Advice From Cats</Text>
-        </TouchableOpacity>
+      {tallerPhone ? (
+        <View style={styles.buttonsTop}>
+          <TouchableOpacity
+            style={styles.button}
+            title="Advice from Cats"
+            onPress={() => navigation.navigate("Advice From Cats")}
+          >
+            <Text style={styles.buttonText}>Advice From Cats</Text>
+          </TouchableOpacity>
 
-        <TouchableOpacity
-          style={styles.button}
-          title="This Day In History"
-          onPress={() => navigation.navigate("This Day in History")}
-        >
-          <Text style={styles.buttonText}>This Day In History</Text>
-        </TouchableOpacity>
-      </View>
+          <TouchableOpacity
+            style={styles.button}
+            title="This Day In History"
+            onPress={() => navigation.navigate("This Day in History")}
+          >
+            <Text style={styles.buttonText}>This Day In History</Text>
+          </TouchableOpacity>
+        </View>
+      ) : (
+        <View style={styles.buttonsTopShorter}>
+          <TouchableOpacity
+            style={styles.buttonShorter}
+            title="Advice from Cats"
+            onPress={() => navigation.navigate("Advice From Cats")}
+          >
+            <Text style={styles.buttonTextShorter}>Advice From Cats</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.buttonShorter}
+            title="This Day In History"
+            onPress={() => navigation.navigate("This Day in History")}
+          >
+            <Text style={styles.buttonTextShorter}>This Day In History</Text>
+          </TouchableOpacity>
+        </View>
+      )}
 
       <View style={styles.quotes}>
         <Text style={styles.quote}>"{quote}"</Text>
         <Text style={styles.author}>-{author}</Text>
       </View>
 
-      <View style={styles.buttonsBottom}>
-        <TouchableOpacity
-          style={styles.button}
-          title="See Dad Jokes!"
-          onPress={() => navigation.navigate("Dad Jokes")}
-        >
-          <Text style={styles.buttonText}>Dad Jokes</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
-          title="Bored"
-          onPress={() => navigation.navigate("Bored")}
-        >
-          <Text style={styles.buttonText}>Inspiration</Text>
-        </TouchableOpacity>
-      </View>
+      {tallerPhone ? (
+        <View style={styles.buttonsBottom}>
+          <TouchableOpacity
+            style={styles.button}
+            title="See Dad Jokes!"
+            onPress={() => navigation.navigate("Dad Jokes")}
+          >
+            <Text style={styles.buttonText}>Dad Jokes</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.button}
+            title="Bored"
+            onPress={() => navigation.navigate("Bored")}
+          >
+            <Text style={styles.buttonText}>Inspiration</Text>
+          </TouchableOpacity>
+        </View>
+      ) : (
+        <View style={styles.buttonsBottomShorter}>
+          <TouchableOpacity
+            style={styles.buttonShorter}
+            title="See Dad Jokes!"
+            onPress={() => navigation.navigate("Dad Jokes")}
+          >
+            <Text style={styles.buttonTextShorter}>Dad Jokes</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.button}
+            title="Bored"
+            onPress={() => navigation.navigate("Bored")}
+          >
+            <Text style={styles.buttonTextShorter}>Inspiration</Text>
+          </TouchableOpacity>
+        </View>
+      )}
     </SafeAreaView>
   );
 };
@@ -120,7 +165,7 @@ const styles = StyleSheet.create({
   },
   buttonsTop: {
     position: "absolute",
-    top: 150,
+    top: "30%",
     display: "flex",
     flexDirection: "row",
     flexWrap: "wrap",
@@ -129,7 +174,7 @@ const styles = StyleSheet.create({
   },
   buttonsBottom: {
     position: "absolute",
-    bottom: "10%",
+    bottom: "25%",
     display: "flex",
     flexDirection: "row",
     flexWrap: "wrap",
@@ -153,6 +198,42 @@ const styles = StyleSheet.create({
   buttonText: {
     color: "#312F2F",
     fontWeight: "bold",
+  },
+  buttonsTopShorter: {
+    position: "absolute",
+    top: 150,
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-around",
+    width: "100%",
+  },
+  buttonShorter: {
+    backgroundColor: "#A4B0F5",
+    height: 90,
+    width: 150,
+    justifyContent: "center",
+    alignItems: "center",
+    borderWidth: 0.5,
+    marginBottom: 20,
+    borderBottomWidth: 4,
+    borderRadius: 20,
+    shadowOffset: { width: 5, height: 5 },
+    shadowColor: "#312F2F",
+    shadowOpacity: 1.0,
+  },
+  buttonTextShorter: {
+    color: "#312F2F",
+    fontWeight: "bold",
+  },
+  buttonsBottomShorter: {
+    position: "absolute",
+    bottom: "10%",
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-around",
+    width: "100%",
   },
 });
 export default HomeScreen;
