@@ -4,10 +4,14 @@ import { StyleSheet, Text, View, Image } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import * as Animatable from "react-native-animatable";
 import "@expo/match-media";
+import { useMediaQuery } from "react-responsive";
 
 export default function DadJokes() {
-  let [joke, setJoke] = React.useState("You kids like jokes?");
+  const [joke, setJoke] = React.useState("You kids like jokes?");
   const [animation, setAnimation] = useState("bounceIn");
+
+  const tallerPhone = useMediaQuery({ minWidth: 410 });
+  const shorterPhone = useMediaQuery({ maxWidth: 410 });
 
   const fetchApiCall = () => {
     fetch("https://icanhazdadjoke.com/", {
@@ -29,16 +33,45 @@ export default function DadJokes() {
 
   return (
     <View style={styles.container}>
-      <Image style={styles.img} source={require("../../assets/DadLawn.jpg")} />
+      {tallerPhone && (
+        <Image
+          style={styles.img}
+          source={require("../../assets/DadLawn.jpg")}
+        />
+      )}
+      {shorterPhone && (
+        <Image
+          style={styles.imgShorter}
+          source={require("../../assets/DadLawn.jpg")}
+        />
+      )}
 
       <StatusBar style="auto" />
-      <Animatable.View style={styles.jokeContainer} animation={animation}>
-        <Text style={styles.joke}>"{joke}"</Text>
-      </Animatable.View>
-      <Animatable.View
-        style={styles.jokeBubble}
-        animation={animation}
-      ></Animatable.View>
+      {tallerPhone && (
+        <>
+          <Animatable.View style={styles.jokeContainer} animation={animation}>
+            <Text style={styles.joke}>"{joke}"</Text>
+          </Animatable.View>
+          <Animatable.View
+            style={styles.jokeBubble}
+            animation={animation}
+          ></Animatable.View>
+        </>
+      )}
+      {shorterPhone && (
+        <>
+          <Animatable.View
+            style={styles.jokeContainerSmaller}
+            animation={animation}
+          >
+            <Text style={styles.joke}>"{joke}"</Text>
+          </Animatable.View>
+          <Animatable.View
+            style={styles.jokeBubbleShorter}
+            animation={animation}
+          ></Animatable.View>
+        </>
+      )}
 
       <View style={styles.buttonContainer}>
         <TouchableOpacity onPress={fetchApiCall}>
@@ -86,7 +119,7 @@ const styles = StyleSheet.create({
   jokeContainer: {
     backgroundColor: "#00aabb",
     position: "relative",
-    top: "-30%",
+    top: "-25%",
     padding: 20,
     left: -55,
     width: "60%",
@@ -98,7 +131,7 @@ const styles = StyleSheet.create({
   jokeBubble: {
     position: "relative",
     right: "-13%",
-    top: "-37%",
+    top: "-30%",
     height: 50,
     width: 50,
     backgroundColor: "#00aabb",
@@ -116,6 +149,35 @@ const styles = StyleSheet.create({
     flex: 1,
     zIndex: -1,
     width: "100%",
-    top: "10%",
+    top: "20%",
+  },
+  imgShorter: {
+    position: "absolute",
+    flex: 1,
+    zIndex: -1,
+    width: "100%",
+    top: "0%",
+  },
+  jokeContainerSmaller: {
+    backgroundColor: "#00aabb",
+    position: "relative",
+    top: "-25%",
+    padding: 20,
+    left: -55,
+    width: "60%",
+    borderRadius: 50,
+    shadowOffset: { width: 5, height: 5 },
+    shadowColor: "black",
+    shadowOpacity: 0.5,
+  },
+  jokeBubbleShorter: {
+    position: "relative",
+    right: "-13%",
+    top: "-37%",
+    height: 50,
+    width: 50,
+    backgroundColor: "#00aabb",
+    borderTopLeftRadius: 100,
+    borderBottomRightRadius: 100,
   },
 });
