@@ -69,7 +69,7 @@ const HomeScreen = ({ navigation }) => {
           title="Bored"
           onPress={() => navigation.navigate("Bored")}
         >
-          <Text style={styles.buttonText}>Bored?</Text>
+          <Text style={styles.buttonText}>Inspiration</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -77,13 +77,13 @@ const HomeScreen = ({ navigation }) => {
 };
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#c9aa88", //"#e0dcb5",
+    backgroundColor: "#A6D9F7",
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
   },
   titleView: {
-    backgroundColor: "#aad7e4",
+    backgroundColor: "#312F2F",
     width: "100%",
     height: 100,
     position: "absolute",
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
   },
   title: {
-    color: "#000",
+    color: "#A6D9F7",
     fontSize: 25,
     fontFamily: "Baskerville-SemiBold",
     position: "relative",
@@ -137,21 +137,21 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   button: {
-    backgroundColor: "#a2c6d6",
-    height: 80,
+    backgroundColor: "#A4B0F5",
+    height: 90,
     width: 150,
     justifyContent: "center",
     alignItems: "center",
     borderWidth: 0.5,
     marginBottom: 20,
     borderBottomWidth: 4,
-    borderRadius: 5,
+    borderRadius: 20,
     shadowOffset: { width: 5, height: 5 },
-    shadowColor: "black",
+    shadowColor: "#312F2F",
     shadowOpacity: 1.0,
   },
   buttonText: {
-    color: "#000",
+    color: "#312F2F",
     fontWeight: "bold",
   },
 });

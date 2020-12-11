@@ -9,8 +9,8 @@ export default function AdviceFromCats() {
   const [advice, setAdvice] = useState("");
   const [kitten, setKitten] = useState(null);
   const [adviceAnimation, setAdviceAnimation] = useState("flipInY");
-  const [kittenAnimation, setKittenAnimation] = useState("flipInX");
-  const [yesNoAnimation, setYesNoAnimation] = useState("bounceInDown");
+  const [kittenAnimation, setKittenAnimation] = useState("flipInY");
+  const [yesNoAnimation, setYesNoAnimation] = useState("bounceInUp");
 
   const fetchDecisions = () => {
     fetch("https://yesno.wtf/api", {
@@ -22,8 +22,7 @@ export default function AdviceFromCats() {
       .then((response) => response.json())
       .then((response) => {
         setDecision(response.answer);
-        setYesNoAnimation("fadeOut");
-        setYesNoAnimation("bounceInDown");
+        setYesNoAnimation("bounceInUp");
       })
       .catch((err) => {
         console.log(err);
@@ -40,8 +39,7 @@ export default function AdviceFromCats() {
       .then((response) => response.json())
       .then((response) => {
         setAdvice(response.slip.advice);
-        setAdviceAnimation("fadeOut");
-        setAdviceAnimation("flipInY");
+        setAdviceAnimation("fadeInUpBig");
       })
       .catch((err) => {
         console.log(err);
@@ -58,8 +56,7 @@ export default function AdviceFromCats() {
       .then((response) => response.json())
       .then((response) => {
         setKitten(response.file);
-        setKittenAnimation("fadeOut");
-        setKittenAnimation("flipInX");
+        setKittenAnimation("flipInY");
       })
       .catch((err) => {
         console.log(err);
@@ -67,34 +64,51 @@ export default function AdviceFromCats() {
   };
 
   const buttonPress = () => {
+    setKittenAnimation("fadeOut");
+    setAdviceAnimation("fadeOut");
     setYesNoAnimation("fadeOut");
-    fetchAdvice();
     fetchKitten();
+    fetchAdvice();
   };
 
   const yesNoButton = () => {
+    setKittenAnimation("fadeOut");
     setAdviceAnimation("fadeOut");
-    fetchDecisions();
+    setYesNoAnimation("fadeOut");
     fetchKitten();
+    fetchDecisions();
   };
 
   return (
     <View style={styles.container}>
-      <View style={styles.yesNoContainer}>
-        {decision ? (
-          <Animatable.View animation={yesNoAnimation}>
-            <Animatable.Text style={styles.yesNo}>{decision}</Animatable.Text>
-            <Image
-              style={styles.yesNoWordBubble}
-              source={require("../../assets/WordBubbleSide.png")}
-            />
-          </Animatable.View>
-        ) : (
-          <View>
-            <Text></Text>
-          </View>
-        )}
-      </View>
+      <Animatable.View
+        style={styles.kittenContainer}
+        animation={kittenAnimation}
+      >
+        <Image
+          style={styles.kittenImg}
+          source={{
+            uri: `${kitten}`,
+          }}
+        />
+      </Animatable.View>
+
+      {decision ? (
+        <Animatable.View
+          style={styles.yesNoContainer}
+          animation={yesNoAnimation}
+        >
+          <Animatable.Text style={styles.yesNo}>{decision}</Animatable.Text>
+          <Image
+            style={styles.yesNoWordBubble}
+            source={require("../../assets/wordBubble.png")}
+          />
+        </Animatable.View>
+      ) : (
+        <View>
+          <Text style={styles.AdviceNegSpace}></Text>
+        </View>
+      )}
 
       {advice ? (
         <Animatable.View
@@ -104,26 +118,14 @@ export default function AdviceFromCats() {
           <Text style={styles.adviceText}>{advice}</Text>
           <Image
             style={styles.adviceWordBubble}
-            source={require("../../assets/WordBubbleSide.png")}
+            source={require("../../assets/wordBubble.png")}
           />
         </Animatable.View>
       ) : (
-        <View style={styles.advice}>
-          <Text></Text>
+        <View>
+          <Text style={styles.decisionNegSpace}></Text>
         </View>
       )}
-
-      <Animatable.View
-        style={styles.kittenContainer}
-        animation={kittenAnimation}
-      >
-        <Image
-          style={styles.kittens}
-          source={{
-            uri: `${kitten}`,
-          }}
-        />
-      </Animatable.View>
 
       <Animatable.View style={styles.buttonContainer} animation="zoomIn">
         <TouchableOpacity style={styles.button} onPress={buttonPress}>
@@ -133,6 +135,7 @@ export default function AdviceFromCats() {
           <Text style={styles.buttonText}>Yes or No?</Text>
         </TouchableOpacity>
       </Animatable.View>
+
       <StatusBar style="auto" />
     </View>
   );
@@ -144,14 +147,57 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexDirection: "column",
     justifyContent: "space-around",
-    backgroundColor: "white",
+    backgroundColor: "#cc3336",
   },
-  adviceWordBubble: {
+  kittenContainer: {
     position: "relative",
-    top: "-29%",
-    height: 290,
-    zIndex: -1,
+    top: "10%",
+    shadowOffset: { width: 5, height: 5 },
+    shadowColor: "black",
+    shadowOpacity: 1,
+    zIndex: 999,
   },
+  kittenImg: {
+    height: 200,
+    width: 200,
+    position: "relative",
+    bottom: "0%",
+    borderRadius: 50,
+    zIndex: 999,
+  },
+  ///If Yes/No -> Advice
+  decisionNegSpace: {
+    height: 300,
+    position: "relative",
+  },
+  ///If Yes/No -> Advice
+  AdviceNegSpace: {
+    height: 320,
+    position: "relative",
+  },
+
+  yesNoContainer: {
+    position: "relative",
+    alignItems: "center",
+    justifyContent: "center",
+    zIndex: 999,
+    bottom: "-15%",
+  },
+
+  yesNoWordBubble: {
+    position: "relative",
+    bottom: "30%",
+    top: 0,
+    transform: [{ scaleY: -1 }],
+  },
+
+  yesNo: {
+    fontSize: 60,
+    position: "relative",
+    bottom: "-55%",
+    zIndex: 999,
+  },
+
   adviceContainer: {
     position: "relative",
     top: "0%",
@@ -160,47 +206,20 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     zIndex: 998,
   },
+  adviceWordBubble: {
+    transform: [{ scaleY: -1 }],
+    position: "relative",
+    bottom: "65%",
+    zIndex: -1,
+  },
   adviceText: {
     color: "black",
+    fontSize: 20,
     position: "relative",
-    top: "20%",
+    top: "-8%",
     right: "-0%",
   },
 
-  yesNoWordBubble: {
-    position: "relative",
-  },
-  yesNoContainer: {
-    position: "relative",
-    alignItems: "center",
-    justifyContent: "center",
-    zIndex: 999,
-    top: "0%",
-  },
-  yesNo: {
-    fontSize: 50,
-    position: "relative",
-    top: "45%",
-    right: "-20%",
-    zIndex: 999,
-  },
-
-  kittenContainer: {
-    position: "relative",
-    bottom: "0%",
-    shadowOffset: { width: 5, height: 5 },
-    shadowColor: "black",
-    shadowOpacity: 1,
-    zIndex: 999,
-  },
-  kittens: {
-    height: "50%",
-    width: 200,
-    position: "relative",
-    bottom: "-4%",
-    borderRadius: 50,
-    zIndex: 999,
-  },
   buttonContainer: {
     position: "absolute",
     bottom: "5%",
