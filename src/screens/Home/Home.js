@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, SafeAreaView } from "react-native";
+import { View, Text, StyleSheet, SafeAreaView, Image } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 import "@expo/match-media";
@@ -45,7 +45,11 @@ const HomeScreen = ({ navigation }) => {
             title="Advice from Cats"
             onPress={() => navigation.navigate("Advice From Cats")}
           >
-            <Text style={styles.buttonText}>Advice From Cats</Text>
+            <Image
+              style={styles.imgTopCat}
+              source={require("../../../assets/Cat.png")}
+            />
+            <Text style={styles.buttonTextTopCat}>Advice From Cats</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -53,7 +57,11 @@ const HomeScreen = ({ navigation }) => {
             title="This Day In History"
             onPress={() => navigation.navigate("This Day in History")}
           >
-            <Text style={styles.buttonText}>This Day In History</Text>
+            <Image
+              style={styles.imgTopCaveMan}
+              source={require("../../../assets/thisDay.png")}
+            />
+            <Text style={styles.buttonTextHistory}>This Day In History</Text>
           </TouchableOpacity>
         </View>
       ) : (
@@ -63,7 +71,11 @@ const HomeScreen = ({ navigation }) => {
             title="Advice from Cats"
             onPress={() => navigation.navigate("Advice From Cats")}
           >
-            <Text style={styles.buttonTextShorter}>Advice From Cats</Text>
+            <Image
+              style={styles.imgTopCatSmaller}
+              source={require("../../../assets/Cat.png")}
+            />
+            <Text style={styles.buttonTextTopShorter}>Advice From Cats</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -71,7 +83,13 @@ const HomeScreen = ({ navigation }) => {
             title="This Day In History"
             onPress={() => navigation.navigate("This Day in History")}
           >
-            <Text style={styles.buttonTextShorter}>This Day In History</Text>
+            <Image
+              style={styles.imgTopCaveManSmaller}
+              source={require("../../../assets/thisDay.png")}
+            />
+            <Text style={styles.buttonTextHistoryTopShorter}>
+              This Day In History
+            </Text>
           </TouchableOpacity>
         </View>
       )}
@@ -88,7 +106,13 @@ const HomeScreen = ({ navigation }) => {
             title="See Dad Jokes!"
             onPress={() => navigation.navigate("Dad Jokes")}
           >
-            <Text style={styles.buttonText}>Dad Jokes</Text>
+            <Text style={[styles.buttonText, styles.buttonLeft]}>
+              Dad Jokes
+            </Text>
+            <Image
+              style={styles.imgDadLarge}
+              source={require("../../../assets/DadLawn.jpg")}
+            />
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.button}
@@ -96,6 +120,10 @@ const HomeScreen = ({ navigation }) => {
             onPress={() => navigation.navigate("Bored")}
           >
             <Text style={styles.buttonText}>Inspiration</Text>
+            <Image
+              style={styles.imgInspirationLarge}
+              source={require("../../../assets/icon.png")}
+            />
           </TouchableOpacity>
         </View>
       ) : (
@@ -105,14 +133,22 @@ const HomeScreen = ({ navigation }) => {
             title="See Dad Jokes!"
             onPress={() => navigation.navigate("Dad Jokes")}
           >
-            <Text style={styles.buttonTextShorter}>Dad Jokes</Text>
+            <Image
+              style={styles.imgDadShort}
+              source={require("../../../assets/DadLawn.jpg")}
+            />
+            <Text style={styles.buttonDadTextShort}>Dad Jokes</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            style={styles.button}
+            style={styles.buttonShorter}
             title="Bored"
             onPress={() => navigation.navigate("Bored")}
           >
-            <Text style={styles.buttonTextShorter}>Inspiration</Text>
+            <Image
+              style={styles.imgInspirationShort}
+              source={require("../../../assets/icon.png")}
+            />
+            <Text style={styles.buttonInspirationTextShort}>Inspiration</Text>
           </TouchableOpacity>
         </View>
       )}
@@ -148,7 +184,7 @@ const styles = StyleSheet.create({
   },
   quotes: {
     position: "relative",
-    top: "0%",
+    top: "2%",
     paddingLeft: 10,
     paddingRight: 10,
   },
@@ -164,7 +200,7 @@ const styles = StyleSheet.create({
   },
   buttonsTop: {
     position: "absolute",
-    top: "30%",
+    top: "18%",
     display: "flex",
     flexDirection: "row",
     flexWrap: "wrap",
@@ -173,7 +209,7 @@ const styles = StyleSheet.create({
   },
   buttonsBottom: {
     position: "absolute",
-    bottom: "25%",
+    bottom: "6%",
     display: "flex",
     flexDirection: "row",
     flexWrap: "wrap",
@@ -181,26 +217,32 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   button: {
-    backgroundColor: "#A4B0F5",
-    height: 90,
+    backgroundColor: "white", //"#f7ad00", //"#fce500", //backgroundColor:"#A4B0F5",
+    height: 190,
     width: 150,
     justifyContent: "center",
     alignItems: "center",
     borderWidth: 0.5,
     marginBottom: 20,
-    borderBottomWidth: 4,
+    borderBottomWidth: 6,
     borderRadius: 20,
-    shadowOffset: { width: 5, height: 5 },
-    shadowColor: "#312F2F",
+    shadowOffset: { width: 5, height: 5 }, //shadowOffset: { width: 5, height: 5 },
+    shadowColor: "#312F2F", //'#fce500'
     shadowOpacity: 1.0,
   },
   buttonText: {
     color: "#312F2F",
     fontWeight: "bold",
+    position: "relative",
+    top: 15,
+    zIndex: 999,
+  },
+  buttonLeft: {
+    left: -15,
   },
   buttonsTopShorter: {
     position: "absolute",
-    top: 150,
+    top: 120,
     display: "flex",
     flexDirection: "row",
     flexWrap: "wrap",
@@ -208,8 +250,8 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   buttonShorter: {
-    backgroundColor: "#A4B0F5",
-    height: 90,
+    backgroundColor: "white",
+    height: 150,
     width: 150,
     justifyContent: "center",
     alignItems: "center",
@@ -218,7 +260,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 4,
     borderRadius: 20,
     shadowOffset: { width: 5, height: 5 },
-    shadowColor: "#312F2F",
+    shadowColor: "#312F2F", //'#fce500'
     shadowOpacity: 1.0,
   },
   buttonTextShorter: {
@@ -227,12 +269,113 @@ const styles = StyleSheet.create({
   },
   buttonsBottomShorter: {
     position: "absolute",
-    bottom: "10%",
+    bottom: "2%",
     display: "flex",
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "space-around",
     width: "100%",
   },
+  imgInspirationLarge: {
+    position: "relative",
+    top: -8,
+    height: 185,
+    width: 150,
+    borderRadius: 20,
+  },
+  imgDadLarge: {
+    position: "relative",
+    top: -8,
+    height: 185,
+    width: 150,
+    borderRadius: 20,
+  },
+  imgTopCat: {
+    position: "relative",
+    top: 15,
+    height: 170,
+    width: 149,
+    borderRadius: 20,
+  },
+  imgTopCaveMan: {
+    position: "relative",
+    top: 19,
+    height: "86%",
+    width: "99%",
+    borderRadius: 20,
+  },
+  buttonTextTopCat: {
+    color: "#312F2F",
+    fontWeight: "bold",
+    position: "relative",
+    bottom: 159,
+    right: 0,
+    zIndex: 999,
+  },
+  buttonTextHistory: {
+    color: "#312F2F",
+    fontWeight: "bold",
+    position: "relative",
+    bottom: 157,
+    zIndex: 999,
+  },
+  imgTopCatSmaller: {
+    position: "relative",
+    top: 15,
+    height: "90%",
+    width: 149,
+    borderRadius: 20,
+  },
+  buttonTextTopShorter: {
+    color: "#312F2F",
+    fontWeight: "bold",
+    position: "relative",
+    bottom: 125,
+    zIndex: 999,
+  },
+  imgTopCaveManSmaller: {
+    position: "relative",
+    top: 22,
+    height: "93%",
+    width: "87%",
+    borderRadius: 20,
+  },
+  buttonTextHistoryTopShorter: {
+    color: "#312F2F",
+    fontWeight: "bold",
+    position: "relative",
+    bottom: 128,
+    zIndex: 999,
+  },
+  imgInspirationShort: {
+    position: "relative",
+    top: 10,
+    height: "95%",
+    width: 149,
+    borderRadius: 20,
+  },
+  buttonInspirationTextShort: {
+    color: "#312F2F",
+    fontWeight: "bold",
+    position: "relative",
+    bottom: 128,
+    zIndex: 999,
+  },
+  imgDadShort: {
+    position: "relative",
+    top: 15,
+    left: 20,
+    height: "90%",
+    width: "70%",
+    borderRadius: 20,
+  },
+  buttonDadTextShort: {
+    color: "#312F2F",
+    fontWeight: "bold",
+    position: "relative",
+    bottom: 120,
+    zIndex: 999,
+  },
 });
+
 export default HomeScreen;
