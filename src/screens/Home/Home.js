@@ -8,10 +8,8 @@ import {
   Pressable,
 } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
-
 import "@expo/match-media";
 import { useMediaQuery } from "react-responsive";
-
 const HomeScreen = ({ navigation }) => {
   const [quote, setQuote] = useState("Loading...");
   const [author, setAuthor] = useState("");
