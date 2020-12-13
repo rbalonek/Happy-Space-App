@@ -7,28 +7,13 @@ import {
   Image,
   Pressable,
 } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
-
 import "@expo/match-media";
 import { useMediaQuery } from "react-responsive";
 
 const HomeScreen = ({ navigation }) => {
   const [quote, setQuote] = useState("Loading...");
   const [author, setAuthor] = useState("");
-
-  const [backgroundBtnStyleCat, setBackgroundButtonStyleCat] = useState(
-    styles.backgroundBoxCat
-  );
-  const [buttonStyleCat, setButtonStyleCat] = useState(
-    styles.frontBoxPressedCat
-  );
-
-  const [backgroundBtnStyleHistory, setBackgroundButtonStyleHistory] = useState(
-    styles.backgroundBoxHistory
-  );
-  const [buttonStyleHistory, setButtonStyleHistory] = useState(
-    styles.frontBoxPressedHistory
-  );
+  const [buttonStyle, setButtonStyle] = useState("buttonUnpressed");
 
   const tallerPhone = useMediaQuery({ minWidth: 410 });
 
@@ -53,7 +38,8 @@ const HomeScreen = ({ navigation }) => {
       });
   };
 
-  const NavCats = () => {
+  const PressOutCats = () => {
+    setButtonStyle(styles.buttonUnpressed);
     navigation.navigate("Advice From Cats");
   };
 
@@ -65,19 +51,13 @@ const HomeScreen = ({ navigation }) => {
 
       {tallerPhone ? (
         <View style={styles.buttonsTop}>
-          <View style={backgroundBtnStyleCat}></View>
           <Pressable
-            style={buttonStyleCat}
+            style={buttonStyle}
+            title="Advice from Cats"
             onPressIn={() => {
-              setButtonStyleCat(styles.frontBoxPressedCat);
-              setBackgroundButtonStyleCat(styles.backgroundBoxPressedCat);
+              setButtonStyle(styles.buttonpressed);
             }}
-            onPressOut={() => {
-              setButtonStyleCat(styles.frontBoxCat);
-              setBackgroundButtonStyleCat(styles.backgroundBoxCat);
-              // NavCats();
-            }}
-            easing="ease-in-out"
+            onPressOut={PressOutCats}
           >
             <Image
               style={styles.imgTopCat}
@@ -86,28 +66,17 @@ const HomeScreen = ({ navigation }) => {
             <Text style={styles.buttonTextTopCat}>Advice From Cats</Text>
           </Pressable>
 
-          <View style={backgroundBtnStyleHistory}></View>
-          <Pressable
-            style={buttonStyleHistory}
-            onPressIn={() => {
-              setButtonStyleHistory(styles.frontBoxPressedHistory);
-              setBackgroundButtonStyleHistory(
-                styles.backgroundBoxPressedHistory
-              );
-            }}
-            onPressOut={() => {
-              setButtonStyleHistory(styles.frontBoxHistory);
-              setBackgroundButtonStyleHistory(styles.backgroundBoxHistory);
-              // NavCats();
-            }}
-            easing="ease-in-out"
+          <TouchableOpacity
+            style={styles.button}
+            title="This Day In History"
+            onPress={() => navigation.navigate("This Day in History")}
           >
             <Image
               style={styles.imgTopCaveMan}
               source={require("../../../assets/thisDay.png")}
             />
-            <Text style={styles.buttonTextHistory}>This day in History</Text>
-          </Pressable>
+            <Text style={styles.buttonTextHistory}>This Day In History</Text>
+          </TouchableOpacity>
         </View>
       ) : (
         <View style={styles.buttonsTopShorter}>
@@ -202,7 +171,7 @@ const HomeScreen = ({ navigation }) => {
 };
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#ecf0f1",
+    backgroundColor: "#A6D9F7",
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
@@ -239,10 +208,10 @@ const styles = StyleSheet.create({
   author: {
     color: "grey",
   },
-  // allButtons: {
-  //   position: "absolute",
-  //   bottom: "5%",
-  // },
+  allButtons: {
+    position: "absolute",
+    bottom: "5%",
+  },
   buttonsTop: {
     position: "absolute",
     top: "18%",
@@ -261,20 +230,20 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     width: "100%",
   },
-  // button: {
-  //   backgroundColor: "white", //"#f7ad00", //"#fce500", //backgroundColor:"#A4B0F5",
-  //   height: 190,
-  //   width: 150,
-  //   justifyContent: "center",
-  //   alignItems: "center",
-  //   borderWidth: 0.5,
-  //   marginBottom: 20,
-  //   borderBottomWidth: 6,
-  //   borderRadius: 20,
-  //   shadowOffset: { width: 5, height: 5 }, //shadowOffset: { width: 5, height: 5 },
-  //   shadowColor: "#312F2F", //'#fce500'
-  //   shadowOpacity: 1.0,
-  // },
+  button: {
+    backgroundColor: "white", //"#f7ad00", //"#fce500", //backgroundColor:"#A4B0F5",
+    height: 190,
+    width: 150,
+    justifyContent: "center",
+    alignItems: "center",
+    borderWidth: 0.5,
+    marginBottom: 20,
+    borderBottomWidth: 6,
+    borderRadius: 20,
+    shadowOffset: { width: 5, height: 5 }, //shadowOffset: { width: 5, height: 5 },
+    shadowColor: "#312F2F", //'#fce500'
+    shadowOpacity: 1.0,
+  },
   buttonText: {
     color: "#312F2F",
     fontWeight: "bold",
@@ -339,32 +308,30 @@ const styles = StyleSheet.create({
     position: "relative",
     top: 15,
     height: 170,
-    width: "100%", //149,
+    width: 149,
     borderRadius: 20,
   },
   imgTopCaveMan: {
     position: "relative",
-    top: 29,
-    height: "80%",
-    width: "75%",
+    top: 19,
+    height: "86%",
+    width: "99%",
     borderRadius: 20,
-    alignSelf: "center",
   },
   buttonTextTopCat: {
     color: "#312F2F",
     fontWeight: "bold",
     position: "relative",
     bottom: 159,
-    right: -50,
+    right: 0,
     zIndex: 999,
   },
   buttonTextHistory: {
     color: "#312F2F",
     fontWeight: "bold",
     position: "relative",
-    bottom: 150,
+    bottom: 157,
     zIndex: 999,
-    textAlign: "center",
   },
   imgTopCatSmaller: {
     position: "relative",
@@ -425,8 +392,8 @@ const styles = StyleSheet.create({
   },
   buttonUnpressed: {
     backgroundColor: "white", //"#f7ad00", //"#fce500", //backgroundColor:"#A4B0F5",
-    height: 200,
-    width: 195,
+    height: 190,
+    width: 150,
     justifyContent: "center",
     alignItems: "center",
     borderWidth: 0.5,
@@ -439,157 +406,6 @@ const styles = StyleSheet.create({
   },
   buttonpressed: {
     transform: [{ scale: 0.95 }],
-  },
-  backgroundBoxCat: {
-    height: 200,
-    width: 200,
-    backgroundColor: "grey", //"#A4B0F5", //
-    borderRadius: 25,
-    marginTop: 2,
-    shadowColor: "#A4B0F5",
-    shadowOffset: {
-      width: 10,
-      height: -3,
-    },
-    shadowOpacity: 0.41,
-    shadowRadius: 9.11,
-    elevation: 20,
-  },
-
-  backgroundBoxPressedCat: {
-    height: 200,
-    width: 200,
-    backgroundColor: "#A4B0F5",
-    borderRadius: 25,
-    marginTop: 2,
-    shadowColor: "#A4B0F5",
-    shadowOffset: {
-      width: 10,
-      height: -3,
-    },
-    shadowOpacity: 0.41,
-    shadowRadius: 9.11,
-    elevation: 20,
-  },
-  frontBoxCat: {
-    height: 192,
-    width: 195,
-    backgroundColor: "#f7f7f7",
-    position: "relative",
-    right: 207.9,
-    borderRadius: 25,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 10,
-      height: 27,
-    },
-    textAlign: "center",
-    justifyContent: "center",
-    shadowOpacity: 0.41,
-    shadowRadius: 9.11,
-    elevation: 10,
-  },
-  frontBoxPressedCat: {
-    height: 192,
-    width: 190,
-    backgroundColor: "#f7f7f7",
-    position: "relative",
-    marginTop: 5,
-    right: 207,
-    borderRadius: 25,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 7,
-    },
-    shadowOpacity: 0.41,
-    shadowRadius: 9.11,
-    elevation: 70,
-    textAlign: "center",
-    justifyContent: "center",
-    backgroundColor: "white",
-  },
-
-  backgroundBoxHistory: {
-    position: "absolute",
-    top: 0,
-    right: 0,
-    height: 200,
-    width: 200,
-    backgroundColor: "grey", //"#A4B0F5", //
-    borderRadius: 25,
-    marginTop: 2,
-    shadowColor: "#A4B0F5",
-    shadowOffset: {
-      width: 10,
-      height: -3,
-    },
-    shadowOpacity: 0.41,
-    shadowRadius: 9.11,
-    elevation: 20,
-  },
-
-  backgroundBoxPressedHistory: {
-    position: "absolute",
-    top: 0,
-    right: 0,
-    height: 200,
-    width: 200,
-    backgroundColor: "#A4B0F5",
-    borderRadius: 25,
-    marginTop: 2,
-    shadowColor: "#A4B0F5",
-    shadowOffset: {
-      width: 10,
-      height: -3,
-    },
-    shadowOpacity: 0.41,
-    shadowRadius: 9.11,
-    elevation: 20,
-  },
-  frontBoxHistory: {
-    height: 192,
-    width: 195,
-    backgroundColor: "#f7f7f7",
-    // position: "relative",
-    // right: 207.9,
-    position: "absolute",
-    top: 0,
-    right: 0,
-    borderRadius: 25,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 10,
-      height: 27,
-    },
-    textAlign: "center",
-    justifyContent: "center",
-    shadowOpacity: 0.41,
-    shadowRadius: 9.11,
-    elevation: 10,
-  },
-  frontBoxPressedHistory: {
-    height: 192,
-    width: 190,
-    backgroundColor: "#f7f7f7",
-    // position: "relative",
-    position: "absolute",
-    top: 0,
-    right: 5,
-    marginTop: 5,
-    // right: 207,
-    borderRadius: 25,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 7,
-    },
-    shadowOpacity: 0.41,
-    shadowRadius: 9.11,
-    elevation: 70,
-    textAlign: "center",
-    justifyContent: "center",
-    backgroundColor: "white",
   },
 });
 
