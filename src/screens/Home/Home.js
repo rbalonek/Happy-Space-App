@@ -7,7 +7,6 @@ import {
   Image,
   Pressable,
 } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
 import "@expo/match-media";
 import { useMediaQuery } from "react-responsive";
 const HomeScreen = ({ navigation }) => {
@@ -23,7 +22,8 @@ const HomeScreen = ({ navigation }) => {
   const [
     backgroundBtnStyleCatShorter,
     setBackgroundButtonStyleCatShorter,
-  ] = useState(styles.backgroundBoxCatShorter);
+  ] = useState(styles.backgroundBoxCatsSmaller);
+
   const [buttonStyleCatShorter, setButtonStyleCatShorter] = useState(
     styles.frontBoxPressedCatShorter
   );
@@ -96,7 +96,7 @@ const HomeScreen = ({ navigation }) => {
               onPressOut={() => {
                 setButtonStyleCat(styles.frontBoxUnPressedCat);
                 setBackgroundButtonStyleCat(styles.backgroundBoxUnPressedCat);
-                // NavCats();
+                navigation.navigate("Advice From Cats");
               }}
             >
               <Image
@@ -120,7 +120,7 @@ const HomeScreen = ({ navigation }) => {
                 setBackgroundButtonStyleHistory(
                   styles.backgroundBoxUnPressedHistory
                 );
-                // NavCats();
+                navigation.navigate("This Day in History");
               }}
               easing="ease-in-out"
             >
@@ -151,7 +151,7 @@ const HomeScreen = ({ navigation }) => {
                 setBackgroundButtonStyleDadJokes(
                   styles.backgroundBoxUnPressedDadJokes
                 );
-                // NavCats();
+                navigation.navigate("Dad Jokes");
               }}
               easing="ease-in-out"
             >
@@ -176,7 +176,7 @@ const HomeScreen = ({ navigation }) => {
                 setBackgroundButtonStyleInspiration(
                   styles.backgroundBoxUnPressedInspiration
                 );
-                // NavCats();
+                navigation.navigate("Bored");
               }}
             >
               <Image
@@ -188,8 +188,33 @@ const HomeScreen = ({ navigation }) => {
           </View>
         </View>
       ) : (
-        <View style={styles.buttonsTopShorter}>
-          <Text>Shorter</Text>
+        <View style={styles.shorterContainer}>
+          <View style={styles.quotesSmaller}>
+            <Text style={styles.quote}>"{quote}"</Text>
+            <Text style={styles.author}>-{author}</Text>
+          </View>
+          <View style={backgroundBtnStyleCatShorter}>
+            <Pressable
+              style={buttonStyleCatShorter}
+              onPressIn={() => {
+                setBackgroundButtonStyleCatShorter(
+                  styles.backgroundBoxCatsSmallerPressed
+                );
+                setButtonStyleCatShorter(styles.frontBoxPressedCatShorter);
+              }}
+              onPressOut={() => {
+                setBackgroundButtonStyleCatShorter(
+                  styles.backgroundBoxCatsSmaller
+                );
+                setButtonStyleCatShorter(styles.frontBoxUnPressedCatShorter);
+              }}
+            >
+              <Image
+                style={styles.imgTopCatSmaller}
+                source={require("../../../assets/Cat.png")}
+              />
+            </Pressable>
+          </View>
         </View>
       )}
     </SafeAreaView>
@@ -223,7 +248,7 @@ const styles = StyleSheet.create({
     top: "20%",
   },
   quotes: {
-    position: "relative",
+    position: "absolute",
     top: "35%",
     paddingLeft: 10,
     paddingRight: 10,
@@ -242,7 +267,7 @@ const styles = StyleSheet.create({
   ////////////////////////////////////////////TOP CONTAINER ////////////////////////////////////////////
   buttonsTop: {
     position: "absolute",
-    bottom: "90%",
+    bottom: "100%",
     display: "flex",
     flexDirection: "row",
     flexWrap: "wrap",
@@ -478,77 +503,50 @@ const styles = StyleSheet.create({
     elevation: 20,
   },
 
-  backgroundBoxPressedCatShorter: {
-    position: "relative",
-    top: -100,
-    left: -72,
-    height: 150,
-    width: 150,
-    backgroundColor: "#A4B0F5",
-    borderRadius: 25,
-    marginTop: 2,
-    shadowColor: "#A4B0F5",
-    shadowOffset: {
-      width: 10,
-      height: -3,
-    },
-    shadowOpacity: 0.41,
-    shadowRadius: 9.11,
-    elevation: 20,
-  },
-  frontBoxUnPressedCatShorter: {
-    position: "relative",
-    top: -85,
-    left: -47,
-    height: 122,
-    width: 100,
-    backgroundColor: "#f7f7f7",
-    position: "relative",
-    right: 207.9,
-    borderRadius: 25,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 10,
-      height: 27,
-    },
-    textAlign: "center",
-    justifyContent: "center",
-    alignItems: "center",
-    shadowOpacity: 0.41,
-    shadowRadius: 9.11,
-    elevation: 10,
-  },
-  frontBoxPressedCatShorter: {
-    position: "relative",
-    top: -70,
-    left: -70,
-    height: 80,
-    width: 90,
-    backgroundColor: "#f7f7f7",
-    position: "relative",
-    marginTop: 5,
-    right: 207,
-    borderRadius: 25,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 7,
-    },
-    shadowOpacity: 0.41,
-    shadowRadius: 9.11,
-    elevation: 70,
-    textAlign: "center",
-    justifyContent: "center",
-    backgroundColor: "white",
-  },
-
-  // imgTopCatSmaller: {
+  // backgroundBoxPressedCatShorter: {
   //   position: "relative",
-  //   top: 15,
-  //   height: "90%",
-  //   width: 149,
-  //   borderRadius: 20,
+  //   top: -100,
+  //   left: -72,
+  //   height: 150,
+  //   width: 150,
+  //   backgroundColor: "#A4B0F5",
+  //   borderRadius: 25,
+  //   marginTop: 2,
+  //   shadowColor: "#A4B0F5",
+  //   shadowOffset: {
+  //     width: 10,
+  //     height: -3,
+  //   },
+  //   shadowOpacity: 0.41,
+  //   shadowRadius: 9.11,
+  //   elevation: 20,
   // },
+
+  // frontBoxPressedCatShorter: {
+  //   position: "relative",
+  //   top: -70,
+  //   left: -70,
+  //   height: 80,
+  //   width: 90,
+  //   backgroundColor: "#f7f7f7",
+  //   position: "relative",
+  //   marginTop: 5,
+  //   // right: 207,
+  //   borderRadius: 25,
+  //   shadowColor: "#000",
+  //   shadowOffset: {
+  //     width: 0,
+  //     height: 7,
+  //   },
+  //   shadowOpacity: 0.41,
+  //   shadowRadius: 9.11,
+  //   elevation: 70,
+  //   textAlign: "center",
+  //   justifyContent: "center",
+  //   backgroundColor: "white",
+  // },
+
+  //
   // buttonTextTopShorter: {
   //   color: "#312F2F",
   //   fontWeight: "bold",
@@ -574,7 +572,7 @@ const styles = StyleSheet.create({
   ////////////////////////////////////////////BOTTOM CONTAINER ////////////////////////////////////////////
   buttonsBottom: {
     position: "relative",
-    bottom: "-60%",
+    bottom: "-70%",
     display: "flex",
     flexDirection: "row",
     flexWrap: "wrap",
@@ -831,24 +829,90 @@ const styles = StyleSheet.create({
     bottom: 128,
     zIndex: 999,
   },
+  /////////////////////////////////////////////////////////////// SMALLER
 
-  // buttonUnpressed: {
-  //   backgroundColor: "white", //"#f7ad00", //"#fce500", //backgroundColor:"#A4B0F5",
-  //   height: 200,
-  //   width: 195,
-  //   justifyContent: "center",
-  //   alignItems: "center",
-  //   borderWidth: 0.5,
-  //   marginBottom: 20,
-  //   borderBottomWidth: 6,
-  //   borderRadius: 20,
-  //   shadowOffset: { width: 5, height: 5 }, //shadowOffset: { width: 5, height: 5 },
-  //   shadowColor: "#312F2F", //'#fce500'
-  //   shadowOpacity: 1.0,
-  // },
-  // buttonpressed: {
-  //   transform: [{ scale: 0.95 }],
-  // },
+  shorterContainer: {
+    flex: 1,
+    alignItems: "center",
+  },
+  quotesSmaller: {
+    position: "absolute",
+    top: "15%",
+    paddingLeft: 10,
+    paddingRight: 10,
+  },
+  backgroundBoxCatsSmaller: {
+    height: 150,
+    width: 150,
+    backgroundColor: "grey",
+    borderRadius: 25,
+    position: "relative",
+    top: 350,
+    left: -100,
+    // transform: [{ skewX: "15deg" } ]
+  },
+  backgroundBoxCatsSmallerPressed: {
+    height: 150,
+    width: 150,
+    backgroundColor: "purple",
+    borderRadius: 25,
+    position: "relative",
+    top: 350,
+    left: -100,
+    // transform: [{ skewX: "15deg" } ]
+  },
+  frontBoxPressedCatShorter: {
+    position: "relative",
+    top: -2,
+    left: 3,
+    height: 140,
+    width: 145,
+    backgroundColor: "#f7f7f7",
+    position: "relative",
+    marginTop: 5,
+    // right: 207,
+    borderRadius: 25,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 7,
+    },
+    shadowOpacity: 0.41,
+    shadowRadius: 9.11,
+    elevation: 70,
+    textAlign: "center",
+    justifyContent: "center",
+    backgroundColor: "white",
+  },
+  frontBoxUnPressedCatShorter: {
+    position: "relative",
+    top: -10,
+    left: 5,
+    height: 140,
+    width: 145,
+    backgroundColor: "#f7f7f7",
+    position: "relative",
+    right: 207.9,
+    borderRadius: 25,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 10,
+      height: 27,
+    },
+    textAlign: "center",
+    justifyContent: "center",
+    alignItems: "center",
+    shadowOpacity: 0.41,
+    shadowRadius: 9.11,
+    elevation: 10,
+  },
+  imgTopCatSmaller: {
+    position: "relative",
+    top: 15,
+    height: "80%",
+    width: 129,
+    borderRadius: 20,
+  },
 });
 
 export default HomeScreen;
