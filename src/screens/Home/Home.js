@@ -185,6 +185,30 @@ const HomeScreen = ({ navigation }) => {
             />
             <Text style={styles.buttonTextDadLarge}>Dad Jokes</Text>
           </Pressable>
+
+          <View style={backgroundBtnStyleInspiration}></View>
+          <Pressable
+            style={buttonStyleInspiration}
+            onPressIn={() => {
+              setButtonStyleInspiration(styles.frontBoxPressedInspiration);
+              setBackgroundButtonStyleInspiration(
+                styles.backgroundBoxPressedInspiration
+              );
+            }}
+            onPressOut={() => {
+              setButtonStyleInspiration(styles.frontBoxUnPressedInspiration);
+              setBackgroundButtonStyleInspiration(
+                styles.backgroundBoxUnPressedInspiration
+              );
+              // NavCats();
+            }}
+          >
+            <Image
+              style={styles.imgInspirationLarge}
+              source={require("../../../assets/icon.png")}
+            />
+            <Text style={styles.buttonInspirationTextLarge}>Inspiration</Text>
+          </Pressable>
         </View>
       ) : (
         <View style={styles.buttonsBottomShorter}>
@@ -451,6 +475,74 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
 
+  ////////////////////////////// SMALLER SCREENS
+  imgTopCatSmaller: {
+    position: "relative",
+    top: 15,
+    height: "90%",
+    width: 149,
+    borderRadius: 20,
+  },
+  buttonTextTopShorter: {
+    color: "#312F2F",
+    fontWeight: "bold",
+    position: "relative",
+    bottom: 125,
+    zIndex: 999,
+  },
+  imgTopCaveManSmaller: {
+    position: "relative",
+    top: 22,
+    height: "93%",
+    width: "87%",
+    borderRadius: 20,
+  },
+  buttonTextHistoryTopShorter: {
+    color: "#312F2F",
+    fontWeight: "bold",
+    position: "relative",
+    bottom: 128,
+    zIndex: 999,
+  },
+
+  ////////////////////////////////////////////BOTTOM CONTAINER ////////////////////////////////////////////
+  buttonsBottom: {
+    position: "absolute",
+    bottom: "6%",
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-around",
+    width: "100%",
+  },
+  // button: {
+  //   backgroundColor: "white", //"#f7ad00", //"#fce500", //backgroundColor:"#A4B0F5",
+  //   height: 190,
+  //   width: 150,
+  //   justifyContent: "center",
+  //   alignItems: "center",
+  //   borderWidth: 0.5,
+  //   marginBottom: 20,
+  //   borderBottomWidth: 6,
+  //   borderRadius: 20,
+  //   shadowOffset: { width: 5, height: 5 }, //shadowOffset: { width: 5, height: 5 },
+  //   shadowColor: "#312F2F", //'#fce500'
+  //   shadowOpacity: 1.0,
+  // },
+
+  buttonLeft: {
+    // left: -15,
+  },
+
+  buttonsBottomShorter: {
+    position: "absolute",
+    bottom: "2%",
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-around",
+    width: "100%",
+  },
   /////////////////////////////DAD JOKES ////////
   backgroundBoxUnPressedDadJokes: {
     height: 200,
@@ -522,101 +614,6 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
 
-  ////////////////////////////// SMALLER SCREENS
-  imgTopCatSmaller: {
-    position: "relative",
-    top: 15,
-    height: "90%",
-    width: 149,
-    borderRadius: 20,
-  },
-  buttonTextTopShorter: {
-    color: "#312F2F",
-    fontWeight: "bold",
-    position: "relative",
-    bottom: 125,
-    zIndex: 999,
-  },
-  imgTopCaveManSmaller: {
-    position: "relative",
-    top: 22,
-    height: "93%",
-    width: "87%",
-    borderRadius: 20,
-  },
-  buttonTextHistoryTopShorter: {
-    color: "#312F2F",
-    fontWeight: "bold",
-    position: "relative",
-    bottom: 128,
-    zIndex: 999,
-  },
-
-  ////////////////////////////////////////////BOTTOM CONTAINER ////////////////////////////////////////////
-  buttonsBottom: {
-    position: "absolute",
-    bottom: "6%",
-    display: "flex",
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "space-around",
-    width: "100%",
-  },
-  // button: {
-  //   backgroundColor: "white", //"#f7ad00", //"#fce500", //backgroundColor:"#A4B0F5",
-  //   height: 190,
-  //   width: 150,
-  //   justifyContent: "center",
-  //   alignItems: "center",
-  //   borderWidth: 0.5,
-  //   marginBottom: 20,
-  //   borderBottomWidth: 6,
-  //   borderRadius: 20,
-  //   shadowOffset: { width: 5, height: 5 }, //shadowOffset: { width: 5, height: 5 },
-  //   shadowColor: "#312F2F", //'#fce500'
-  //   shadowOpacity: 1.0,
-  // },
-
-  buttonLeft: {
-    // left: -15,
-  },
-  buttonsTopShorter: {
-    position: "absolute",
-    top: 120,
-    display: "flex",
-    flexDirection: "row",
-    // flexWrap: "wrap",
-    justifyContent: "space-around",
-    width: "100%",
-  },
-  buttonShorter: {
-    backgroundColor: "white",
-    height: 150,
-    width: 150,
-    justifyContent: "center",
-    alignItems: "center",
-    borderWidth: 0.5,
-    marginBottom: 20,
-    borderBottomWidth: 4,
-    borderRadius: 20,
-    shadowOffset: { width: 5, height: 5 },
-    shadowColor: "#312F2F", //'#fce500'
-    shadowOpacity: 1.0,
-  },
-  buttonTextShorter: {
-    color: "#312F2F",
-    fontWeight: "bold",
-  },
-  buttonsBottomShorter: {
-    position: "absolute",
-    bottom: "2%",
-    display: "flex",
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "space-around",
-    width: "100%",
-  },
-  ////////Dad Jokes///////////////////////
   imgDadLarge: {
     position: "relative",
     top: 8,
@@ -635,29 +632,6 @@ const styles = StyleSheet.create({
     left: 30,
   },
 
-  ///////// Inspiration /////////
-  imgInspirationLarge: {
-    position: "relative",
-    top: -8,
-    height: 185,
-    width: 150,
-    borderRadius: 20,
-  },
-
-  imgInspirationShort: {
-    position: "relative",
-    top: 10,
-    height: "95%",
-    width: 149,
-    borderRadius: 20,
-  },
-  buttonInspirationTextShort: {
-    color: "#312F2F",
-    fontWeight: "bold",
-    position: "relative",
-    bottom: 128,
-    zIndex: 999,
-  },
   imgDadShort: {
     position: "relative",
     top: 15,
@@ -673,6 +647,125 @@ const styles = StyleSheet.create({
     bottom: 120,
     zIndex: 999,
   },
+
+  ///////// Inspiration /////////
+  backgroundBoxUnPressedInspiration: {
+    position: "absolute",
+    right: 5,
+    bottom: 0,
+    height: 200,
+    width: 180,
+    backgroundColor: "grey", //"#A4B0F5", //
+    borderRadius: 25,
+    marginTop: 2,
+    shadowColor: "#A4B0F5",
+    shadowOffset: {
+      width: 10,
+      height: -3,
+    },
+    shadowOpacity: 0.41,
+    shadowRadius: 9.11,
+    elevation: 20,
+  },
+
+  backgroundBoxPressedInspiration: {
+    position: "absolute",
+    right: 5,
+    bottom: 0,
+    height: 200,
+    width: 180,
+    backgroundColor: "green", //"#A4B0F5",
+    borderRadius: 25,
+    marginTop: 2,
+    shadowColor: "green",
+    shadowOffset: {
+      width: 10,
+      height: 13,
+    },
+    shadowOpacity: 0.41,
+    shadowRadius: 9.11,
+    elevation: 20,
+  },
+  frontBoxUnPressedInspiration: {
+    position: "absolute",
+    right: 5,
+    bottom: "5%",
+    height: 192,
+    width: 180,
+    backgroundColor: "#f6f6f6",
+    // position: "relative",
+    // right: 0,
+    // top: 100,
+    borderRadius: 25,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 10,
+      height: 27,
+    },
+    textAlign: "center",
+    justifyContent: "center",
+    shadowOpacity: 0.41,
+    shadowRadius: 9.11,
+    elevation: 10,
+  },
+  frontBoxPressedInspiration: {
+    position: "absolute",
+    right: 10,
+    bottom: 5,
+    height: 192,
+    width: 170,
+    backgroundColor: "#f6f6f6",
+    // position: "relative",
+    // marginTop: 5,
+    // right: 207,
+    borderRadius: 25,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 7,
+    },
+    shadowOpacity: 0.41,
+    shadowRadius: 9.11,
+    elevation: 70,
+    textAlign: "center",
+    justifyContent: "center",
+    backgroundColor: "white",
+    // position: "relative",
+    // right: 0,
+  },
+
+  imgInspirationLarge: {
+    position: "relative",
+    bottom: -10,
+    right: -15,
+    height: 185,
+    width: 150,
+    borderRadius: 20,
+  },
+
+  imgInspirationShort: {
+    position: "relative",
+    top: 10,
+    height: "95%",
+    width: 149,
+    borderRadius: 20,
+  },
+  buttonInspirationTextLarge: {
+    color: "#312F2F",
+    fontWeight: "bold",
+    position: "relative",
+    bottom: 170,
+    zIndex: 999,
+    left: 50,
+  },
+  buttonInspirationTextShort: {
+    color: "#312F2F",
+    fontWeight: "bold",
+    position: "relative",
+    bottom: 128,
+    zIndex: 999,
+  },
+
   // buttonUnpressed: {
   //   backgroundColor: "white", //"#f7ad00", //"#fce500", //backgroundColor:"#A4B0F5",
   //   height: 200,
