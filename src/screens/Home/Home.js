@@ -28,6 +28,21 @@ const HomeScreen = ({ navigation }) => {
     styles.frontBoxPressedHistory
   );
 
+  const [
+    backgroundBtnStyleDadJokes,
+    setBackgroundButtonStyleDadJokes,
+  ] = useState(styles.backgroundBox);
+  const [buttonStyleDadJokes, setButtonStyleDadJokes] = useState(
+    styles.frontBoxPressed
+  );
+  const [
+    backgroundBtnStyleInspiration,
+    setBackgroundButtonStyleInspiration,
+  ] = useState(styles.backgroundBox);
+  const [buttonStyleInspiration, setButtonStyleInspiration] = useState(
+    styles.frontBoxPressedInspiration
+  );
+
   const tallerPhone = useMediaQuery({ minWidth: 410 });
 
   useEffect(() => {
@@ -71,8 +86,8 @@ const HomeScreen = ({ navigation }) => {
               setBackgroundButtonStyleCat(styles.backgroundBoxPressedCat);
             }}
             onPressOut={() => {
-              setButtonStyleCat(styles.frontBoxCat);
-              setBackgroundButtonStyleCat(styles.backgroundBoxCat);
+              setButtonStyleCat(styles.frontBoxUnPressedCat);
+              setBackgroundButtonStyleCat(styles.backgroundBoxUnPressedCat);
               // NavCats();
             }}
             easing="ease-in-out"
@@ -94,8 +109,10 @@ const HomeScreen = ({ navigation }) => {
               );
             }}
             onPressOut={() => {
-              setButtonStyleHistory(styles.frontBoxHistory);
-              setBackgroundButtonStyleHistory(styles.backgroundBoxHistory);
+              setButtonStyleHistory(styles.frontBoxHistoryUnPressed);
+              setBackgroundButtonStyleHistory(
+                styles.backgroundBoxUnPressedHistory
+              );
               // NavCats();
             }}
             easing="ease-in-out"
@@ -144,30 +161,30 @@ const HomeScreen = ({ navigation }) => {
 
       {tallerPhone ? (
         <View style={styles.buttonsBottom}>
-          <TouchableOpacity
-            style={styles.button}
-            title="See Dad Jokes!"
-            onPress={() => navigation.navigate("Dad Jokes")}
+          <View style={backgroundBtnStyleDadJokes}></View>
+          <Pressable
+            style={buttonStyleDadJokes}
+            onPressIn={() => {
+              setButtonStyleDadJokes(styles.frontBoxPressedDadJokes);
+              setBackgroundButtonStyleDadJokes(
+                styles.backgroundBoxPressedDadJokes
+              );
+            }}
+            onPressOut={() => {
+              setButtonStyleDadJokes(styles.frontBoxUnPressedDadJokes);
+              setBackgroundButtonStyleDadJokes(
+                styles.backgroundBoxUnPressedDadJokes
+              );
+              // NavCats();
+            }}
+            easing="ease-in-out"
           >
-            <Text style={[styles.buttonText, styles.buttonLeft]}>
-              Dad Jokes
-            </Text>
             <Image
               style={styles.imgDadLarge}
               source={require("../../../assets/DadLawn.jpg")}
             />
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.button}
-            title="Bored"
-            onPress={() => navigation.navigate("Bored")}
-          >
-            <Text style={styles.buttonText}>Inspiration</Text>
-            <Image
-              style={styles.imgInspirationLarge}
-              source={require("../../../assets/icon.png")}
-            />
-          </TouchableOpacity>
+            <Text style={styles.buttonTextDadLarge}>Dad Jokes</Text>
+          </Pressable>
         </View>
       ) : (
         <View style={styles.buttonsBottomShorter}>
@@ -241,6 +258,8 @@ const styles = StyleSheet.create({
   //   position: "absolute",
   //   bottom: "5%",
   // },
+
+  ////////////////////////////////////////////TOP CONTAINER ////////////////////////////////////////////
   buttonsTop: {
     position: "absolute",
     top: "18%",
@@ -249,89 +268,6 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     justifyContent: "space-around",
     width: "100%",
-  },
-  buttonsBottom: {
-    position: "absolute",
-    bottom: "6%",
-    display: "flex",
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "space-around",
-    width: "100%",
-  },
-  // button: {
-  //   backgroundColor: "white", //"#f7ad00", //"#fce500", //backgroundColor:"#A4B0F5",
-  //   height: 190,
-  //   width: 150,
-  //   justifyContent: "center",
-  //   alignItems: "center",
-  //   borderWidth: 0.5,
-  //   marginBottom: 20,
-  //   borderBottomWidth: 6,
-  //   borderRadius: 20,
-  //   shadowOffset: { width: 5, height: 5 }, //shadowOffset: { width: 5, height: 5 },
-  //   shadowColor: "#312F2F", //'#fce500'
-  //   shadowOpacity: 1.0,
-  // },
-  buttonText: {
-    color: "#312F2F",
-    fontWeight: "bold",
-    position: "relative",
-    top: 15,
-    zIndex: 999,
-  },
-  buttonLeft: {
-    left: -15,
-  },
-  buttonsTopShorter: {
-    position: "absolute",
-    top: 120,
-    display: "flex",
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "space-around",
-    width: "100%",
-  },
-  buttonShorter: {
-    backgroundColor: "white",
-    height: 150,
-    width: 150,
-    justifyContent: "center",
-    alignItems: "center",
-    borderWidth: 0.5,
-    marginBottom: 20,
-    borderBottomWidth: 4,
-    borderRadius: 20,
-    shadowOffset: { width: 5, height: 5 },
-    shadowColor: "#312F2F", //'#fce500'
-    shadowOpacity: 1.0,
-  },
-  buttonTextShorter: {
-    color: "#312F2F",
-    fontWeight: "bold",
-  },
-  buttonsBottomShorter: {
-    position: "absolute",
-    bottom: "2%",
-    display: "flex",
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "space-around",
-    width: "100%",
-  },
-  imgInspirationLarge: {
-    position: "relative",
-    top: -8,
-    height: 185,
-    width: 150,
-    borderRadius: 20,
-  },
-  imgDadLarge: {
-    position: "relative",
-    top: -8,
-    height: 185,
-    width: 150,
-    borderRadius: 20,
   },
   imgTopCat: {
     position: "relative",
@@ -364,81 +300,9 @@ const styles = StyleSheet.create({
     zIndex: 999,
     textAlign: "center",
   },
-  imgTopCatSmaller: {
-    position: "relative",
-    top: 15,
-    height: "90%",
-    width: 149,
-    borderRadius: 20,
-  },
-  buttonTextTopShorter: {
-    color: "#312F2F",
-    fontWeight: "bold",
-    position: "relative",
-    bottom: 125,
-    zIndex: 999,
-  },
-  imgTopCaveManSmaller: {
-    position: "relative",
-    top: 22,
-    height: "93%",
-    width: "87%",
-    borderRadius: 20,
-  },
-  buttonTextHistoryTopShorter: {
-    color: "#312F2F",
-    fontWeight: "bold",
-    position: "relative",
-    bottom: 128,
-    zIndex: 999,
-  },
-  imgInspirationShort: {
-    position: "relative",
-    top: 10,
-    height: "95%",
-    width: 149,
-    borderRadius: 20,
-  },
-  buttonInspirationTextShort: {
-    color: "#312F2F",
-    fontWeight: "bold",
-    position: "relative",
-    bottom: 128,
-    zIndex: 999,
-  },
-  imgDadShort: {
-    position: "relative",
-    top: 15,
-    left: 20,
-    height: "90%",
-    width: "70%",
-    borderRadius: 20,
-  },
-  buttonDadTextShort: {
-    color: "#312F2F",
-    fontWeight: "bold",
-    position: "relative",
-    bottom: 120,
-    zIndex: 999,
-  },
-  buttonUnpressed: {
-    backgroundColor: "white", //"#f7ad00", //"#fce500", //backgroundColor:"#A4B0F5",
-    height: 200,
-    width: 195,
-    justifyContent: "center",
-    alignItems: "center",
-    borderWidth: 0.5,
-    marginBottom: 20,
-    borderBottomWidth: 6,
-    borderRadius: 20,
-    shadowOffset: { width: 5, height: 5 }, //shadowOffset: { width: 5, height: 5 },
-    shadowColor: "#312F2F", //'#fce500'
-    shadowOpacity: 1.0,
-  },
-  buttonpressed: {
-    transform: [{ scale: 0.95 }],
-  },
-  backgroundBoxCat: {
+
+  //////////////////////////////////CAT
+  backgroundBoxUnPressedCat: {
     height: 200,
     width: 200,
     backgroundColor: "grey", //"#A4B0F5", //
@@ -469,7 +333,7 @@ const styles = StyleSheet.create({
     shadowRadius: 9.11,
     elevation: 20,
   },
-  frontBoxCat: {
+  frontBoxUnPressedCat: {
     height: 192,
     width: 195,
     backgroundColor: "#f7f7f7",
@@ -508,7 +372,8 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
 
-  backgroundBoxHistory: {
+  /////////////////////////////// History
+  backgroundBoxUnPressedHistory: {
     position: "absolute",
     top: 0,
     right: 0,
@@ -545,12 +410,10 @@ const styles = StyleSheet.create({
     shadowRadius: 9.11,
     elevation: 20,
   },
-  frontBoxHistory: {
+  frontBoxHistoryUnPressed: {
     height: 192,
     width: 195,
     backgroundColor: "#f7f7f7",
-    // position: "relative",
-    // right: 207.9,
     position: "absolute",
     top: 0,
     right: 0,
@@ -570,12 +433,10 @@ const styles = StyleSheet.create({
     height: 192,
     width: 190,
     backgroundColor: "#f7f7f7",
-    // position: "relative",
     position: "absolute",
     top: 0,
     right: 5,
     marginTop: 5,
-    // right: 207,
     borderRadius: 25,
     shadowColor: "#000",
     shadowOffset: {
@@ -589,6 +450,246 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: "white",
   },
+
+  /////////////////////////////DAD JOKES ////////
+  backgroundBoxUnPressedDadJokes: {
+    height: 200,
+    width: 200,
+    backgroundColor: "grey", //"#A4B0F5", //
+    borderRadius: 25,
+    marginTop: 2,
+    shadowColor: "#A4B0F5",
+    shadowOffset: {
+      width: 10,
+      height: -3,
+    },
+    shadowOpacity: 0.41,
+    shadowRadius: 9.11,
+    elevation: 20,
+  },
+
+  backgroundBoxPressedDadJokes: {
+    height: 200,
+    width: 200,
+    backgroundColor: "green", //"#A4B0F5",
+    borderRadius: 25,
+    marginTop: 2,
+    shadowColor: "green",
+    shadowOffset: {
+      width: 10,
+      height: 13,
+    },
+    shadowOpacity: 0.41,
+    shadowRadius: 9.11,
+    elevation: 20,
+  },
+  frontBoxUnPressedDadJokes: {
+    height: 192,
+    width: 195,
+    backgroundColor: "#ffffff",
+    position: "relative",
+    right: 207.9,
+    borderRadius: 25,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 10,
+      height: 27,
+    },
+    textAlign: "center",
+    justifyContent: "center",
+    shadowOpacity: 0.41,
+    shadowRadius: 9.11,
+    elevation: 10,
+  },
+  frontBoxPressedDadJokes: {
+    height: 192,
+    width: 190,
+    backgroundColor: "#f7f7f7",
+    position: "relative",
+    marginTop: 5,
+    right: 207,
+    borderRadius: 25,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 7,
+    },
+    shadowOpacity: 0.41,
+    shadowRadius: 9.11,
+    elevation: 70,
+    textAlign: "center",
+    justifyContent: "center",
+    backgroundColor: "white",
+  },
+
+  ////////////////////////////// SMALLER SCREENS
+  imgTopCatSmaller: {
+    position: "relative",
+    top: 15,
+    height: "90%",
+    width: 149,
+    borderRadius: 20,
+  },
+  buttonTextTopShorter: {
+    color: "#312F2F",
+    fontWeight: "bold",
+    position: "relative",
+    bottom: 125,
+    zIndex: 999,
+  },
+  imgTopCaveManSmaller: {
+    position: "relative",
+    top: 22,
+    height: "93%",
+    width: "87%",
+    borderRadius: 20,
+  },
+  buttonTextHistoryTopShorter: {
+    color: "#312F2F",
+    fontWeight: "bold",
+    position: "relative",
+    bottom: 128,
+    zIndex: 999,
+  },
+
+  ////////////////////////////////////////////BOTTOM CONTAINER ////////////////////////////////////////////
+  buttonsBottom: {
+    position: "absolute",
+    bottom: "6%",
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-around",
+    width: "100%",
+  },
+  // button: {
+  //   backgroundColor: "white", //"#f7ad00", //"#fce500", //backgroundColor:"#A4B0F5",
+  //   height: 190,
+  //   width: 150,
+  //   justifyContent: "center",
+  //   alignItems: "center",
+  //   borderWidth: 0.5,
+  //   marginBottom: 20,
+  //   borderBottomWidth: 6,
+  //   borderRadius: 20,
+  //   shadowOffset: { width: 5, height: 5 }, //shadowOffset: { width: 5, height: 5 },
+  //   shadowColor: "#312F2F", //'#fce500'
+  //   shadowOpacity: 1.0,
+  // },
+
+  buttonLeft: {
+    // left: -15,
+  },
+  buttonsTopShorter: {
+    position: "absolute",
+    top: 120,
+    display: "flex",
+    flexDirection: "row",
+    // flexWrap: "wrap",
+    justifyContent: "space-around",
+    width: "100%",
+  },
+  buttonShorter: {
+    backgroundColor: "white",
+    height: 150,
+    width: 150,
+    justifyContent: "center",
+    alignItems: "center",
+    borderWidth: 0.5,
+    marginBottom: 20,
+    borderBottomWidth: 4,
+    borderRadius: 20,
+    shadowOffset: { width: 5, height: 5 },
+    shadowColor: "#312F2F", //'#fce500'
+    shadowOpacity: 1.0,
+  },
+  buttonTextShorter: {
+    color: "#312F2F",
+    fontWeight: "bold",
+  },
+  buttonsBottomShorter: {
+    position: "absolute",
+    bottom: "2%",
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-around",
+    width: "100%",
+  },
+  ////////Dad Jokes///////////////////////
+  imgDadLarge: {
+    position: "relative",
+    top: 8,
+    left: 25,
+    height: 185,
+    width: 150,
+    borderRadius: 20,
+  },
+
+  buttonTextDadLarge: {
+    color: "#312F2F",
+    fontWeight: "bold",
+    position: "relative",
+    bottom: 150,
+    zIndex: 999,
+    left: 30,
+  },
+
+  ///////// Inspiration /////////
+  imgInspirationLarge: {
+    position: "relative",
+    top: -8,
+    height: 185,
+    width: 150,
+    borderRadius: 20,
+  },
+
+  imgInspirationShort: {
+    position: "relative",
+    top: 10,
+    height: "95%",
+    width: 149,
+    borderRadius: 20,
+  },
+  buttonInspirationTextShort: {
+    color: "#312F2F",
+    fontWeight: "bold",
+    position: "relative",
+    bottom: 128,
+    zIndex: 999,
+  },
+  imgDadShort: {
+    position: "relative",
+    top: 15,
+    left: 20,
+    height: "90%",
+    width: "70%",
+    borderRadius: 20,
+  },
+  buttonDadTextShort: {
+    color: "#312F2F",
+    fontWeight: "bold",
+    position: "relative",
+    bottom: 120,
+    zIndex: 999,
+  },
+  // buttonUnpressed: {
+  //   backgroundColor: "white", //"#f7ad00", //"#fce500", //backgroundColor:"#A4B0F5",
+  //   height: 200,
+  //   width: 195,
+  //   justifyContent: "center",
+  //   alignItems: "center",
+  //   borderWidth: 0.5,
+  //   marginBottom: 20,
+  //   borderBottomWidth: 6,
+  //   borderRadius: 20,
+  //   shadowOffset: { width: 5, height: 5 }, //shadowOffset: { width: 5, height: 5 },
+  //   shadowColor: "#312F2F", //'#fce500'
+  //   shadowOpacity: 1.0,
+  // },
+  // buttonpressed: {
+  //   transform: [{ scale: 0.95 }],
+  // },
 });
 
 export default HomeScreen;
