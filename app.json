@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Happy Space",
+    "name": "Happy-Space",
     "slug": "HappySpace",
     "description": "A happy space to get some inspiration, Dad Jokes,see what happened today in history, and Advice from Cats.",
     "version": "1.0.0",
@@ -19,7 +19,7 @@
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.robertbalonek.happyplace",
-      "buildNumber": "1.0.0"
+      "buildNumber": "1.0.1"
     },
     "android": {
       "adaptiveIcon": {

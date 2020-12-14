@@ -59,7 +59,7 @@ export default function DadJokes() {
         </>
       )}
       {shorterPhone && (
-        <>
+        <View>
           <Animatable.View
             style={styles.jokeContainerSmaller}
             animation={animation}
@@ -70,7 +70,7 @@ export default function DadJokes() {
             style={styles.jokeBubbleShorter}
             animation={animation}
           ></Animatable.View>
-        </>
+        </View>
       )}
 
       <View style={styles.buttonContainer}>

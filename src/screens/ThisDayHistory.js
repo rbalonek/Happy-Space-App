@@ -13,7 +13,6 @@ export default function ThisDayHistory() {
 
   var day = new Date().getDate();
   var month = new Date().getMonth() + 1;
-  // var year = new Date().getFullYear();
 
   function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
