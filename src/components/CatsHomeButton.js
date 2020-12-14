@@ -36,9 +36,6 @@ export default function CatsHomeButton({ screenName }) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    // height: 100,
-  },
   imgTop: {
     height: 120,
     width: 110,
@@ -82,7 +79,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.41,
     shadowRadius: 9.11,
     elevation: 10,
-    // transform: [{ skewX: "15deg" } ]
   },
   frontBoxPressed: {
     height: 140,
