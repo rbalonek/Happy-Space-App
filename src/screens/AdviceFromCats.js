@@ -203,12 +203,10 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     zIndex: 999,
   },
-  ///If Yes/No -> Advice
   decisionNegSpace: {
     height: 300,
     position: "relative",
   },
-  ///If Yes/No -> Advice
   AdviceNegSpace: {
     height: 320,
     position: "relative",
