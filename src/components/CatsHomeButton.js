@@ -1,0 +1,106 @@
+import React, { useState } from "react";
+import { Text, View, StyleSheet, Pressable, Image } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+
+export default function CatsHomeButton({ screenName }) {
+  const [backgroundBtnStyle, setBackgroundButtonStyle] = useState(
+    styles.backgroundBoxUnPressed
+  );
+  const [buttonStyle, setButtonStyle] = useState(styles.frontBoxUnPressed);
+  const navigation = useNavigation();
+
+  return (
+    <View>
+      <View style={backgroundBtnStyle}>
+        <Pressable
+          style={buttonStyle}
+          onPressIn={() => {
+            setButtonStyle(styles.frontBoxPressed);
+            setBackgroundButtonStyle(styles.backgroundBoxPressed);
+          }}
+          onPressOut={() => {
+            setButtonStyle(styles.frontBoxUnPressed);
+            setBackgroundButtonStyle(styles.backgroundBoxUnPressed);
+            navigation.navigate(screenName);
+          }}
+        >
+          <Image
+            style={styles.imgTop}
+            source={require("../../assets/Cat.png")}
+          />
+          <Text style={styles.text}>Advice From Cats</Text>
+        </Pressable>
+      </View>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    // height: 100,
+  },
+  imgTop: {
+    height: 120,
+    width: 110,
+    position: "relative",
+    top: 10,
+    left: 20,
+  },
+  text: {
+    position: "relative",
+    bottom: 115,
+    left: 15,
+    fontSize: 12,
+  },
+  backgroundBoxUnPressed: {
+    height: 150,
+    width: 150,
+    backgroundColor: "grey",
+    borderRadius: 25,
+  },
+  backgroundBoxPressed: {
+    height: 150,
+    width: 150,
+    backgroundColor: "red",
+    borderRadius: 25,
+  },
+  frontBoxUnPressed: {
+    height: 145,
+    width: 145,
+    backgroundColor: "white",
+    position: "relative",
+    top: -10,
+    right: -3,
+    borderRadius: 25,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 10,
+      height: 27,
+    },
+    textAlign: "center",
+    justifyContent: "center",
+    shadowOpacity: 0.41,
+    shadowRadius: 9.11,
+    elevation: 10,
+    // transform: [{ skewX: "15deg" } ]
+  },
+  frontBoxPressed: {
+    height: 140,
+    width: 140,
+    backgroundColor: "white",
+    position: "relative",
+    top: 4,
+    right: -5,
+    borderRadius: 25,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 7,
+    },
+    shadowOpacity: 0.41,
+    shadowRadius: 9.11,
+    elevation: 70,
+    textAlign: "center",
+    justifyContent: "center",
+  },
+});

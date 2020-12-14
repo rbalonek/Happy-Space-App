@@ -9,6 +9,10 @@ import {
 } from "react-native";
 import "@expo/match-media";
 import { useMediaQuery } from "react-responsive";
+import ThisDayHomeButton from "../../components/ThisDayHomeButton";
+import CatsHomeButton from "../../components/CatsHomeButton";
+import DadHomeButton from "../../components/DadHomeButton";
+import InspirationHomeButton from "../../components/InpirationHomeButton";
 const HomeScreen = ({ navigation }) => {
   const [quote, setQuote] = useState("Loading...");
   const [author, setAuthor] = useState("");
@@ -34,6 +38,15 @@ const HomeScreen = ({ navigation }) => {
   const [buttonStyleHistory, setButtonStyleHistory] = useState(
     styles.frontBoxPressedHistory
   );
+  //////////
+  const [
+    backgroundBtnStyleHistorySmaller,
+    setBackgroundButtonStyleHistorySmaller,
+  ] = useState(styles.backgroundBoxHistorySmaller);
+  const [buttonStyleHistorySmaller, setButtonStyleHistorySmaller] = useState(
+    styles.frontBoxPressedHistorySmaller
+  );
+  //////////
 
   const [
     backgroundBtnStyleDadJokes,
@@ -84,107 +97,24 @@ const HomeScreen = ({ navigation }) => {
       </View>
 
       {tallerPhone ? (
-        <View>
-          <View style={styles.buttonsTop}>
-            <View style={backgroundBtnStyleCat}></View>
-            <Pressable
-              style={buttonStyleCat}
-              onPressIn={() => {
-                setButtonStyleCat(styles.frontBoxPressedCat);
-                setBackgroundButtonStyleCat(styles.backgroundBoxPressedCat);
-              }}
-              onPressOut={() => {
-                setButtonStyleCat(styles.frontBoxUnPressedCat);
-                setBackgroundButtonStyleCat(styles.backgroundBoxUnPressedCat);
-                navigation.navigate("Advice From Cats");
-              }}
-            >
-              <Image
-                style={styles.imgTopCat}
-                source={require("../../../assets/Cat.png")}
-              />
-              <Text style={styles.buttonTextTopCat}>Advice From Cats</Text>
-            </Pressable>
-
-            <View style={backgroundBtnStyleHistory}></View>
-            <Pressable
-              style={buttonStyleHistory}
-              onPressIn={() => {
-                setButtonStyleHistory(styles.frontBoxPressedHistory);
-                setBackgroundButtonStyleHistory(
-                  styles.backgroundBoxPressedHistory
-                );
-              }}
-              onPressOut={() => {
-                setButtonStyleHistory(styles.frontBoxHistoryUnPressed);
-                setBackgroundButtonStyleHistory(
-                  styles.backgroundBoxUnPressedHistory
-                );
-                navigation.navigate("This Day in History");
-              }}
-              easing="ease-in-out"
-            >
-              <Image
-                style={styles.imgTopCaveMan}
-                source={require("../../../assets/thisDay.png")}
-              />
-              <Text style={styles.buttonTextHistory}>This day in History</Text>
-            </Pressable>
-          </View>
-
-          <View style={styles.quotes}>
+        <View style={styles.widerContainer}>
+          <View style={styles.quotesLarger}>
             <Text style={styles.quote}>"{quote}"</Text>
             <Text style={styles.author}>-{author}</Text>
           </View>
-          <View style={styles.buttonsBottom}>
-            <View style={backgroundBtnStyleDadJokes}></View>
-            <Pressable
-              style={buttonStyleDadJokes}
-              onPressIn={() => {
-                setButtonStyleDadJokes(styles.frontBoxPressedDadJokes);
-                setBackgroundButtonStyleDadJokes(
-                  styles.backgroundBoxPressedDadJokes
-                );
-              }}
-              onPressOut={() => {
-                setButtonStyleDadJokes(styles.frontBoxUnPressedDadJokes);
-                setBackgroundButtonStyleDadJokes(
-                  styles.backgroundBoxUnPressedDadJokes
-                );
-                navigation.navigate("Dad Jokes");
-              }}
-              easing="ease-in-out"
-            >
-              <Image
-                style={styles.imgDadLarge}
-                source={require("../../../assets/DadLawn.jpg")}
-              />
-              <Text style={styles.buttonTextDadLarge}>Dad Jokes</Text>
-            </Pressable>
 
-            <View style={backgroundBtnStyleInspiration}></View>
-            <Pressable
-              style={buttonStyleInspiration}
-              onPressIn={() => {
-                setButtonStyleInspiration(styles.frontBoxPressedInspiration);
-                setBackgroundButtonStyleInspiration(
-                  styles.backgroundBoxPressedInspiration
-                );
-              }}
-              onPressOut={() => {
-                setButtonStyleInspiration(styles.frontBoxUnPressedInspiration);
-                setBackgroundButtonStyleInspiration(
-                  styles.backgroundBoxUnPressedInspiration
-                );
-                navigation.navigate("Bored");
-              }}
-            >
-              <Image
-                style={styles.imgInspirationLarge}
-                source={require("../../../assets/icon.png")}
-              />
-              <Text style={styles.buttonInspirationTextLarge}>Inspiration</Text>
-            </Pressable>
+          <View style={styles.catsSmallerContainer}>
+            <CatsHomeButton screenName={"Advice From Cats"} />
+          </View>
+
+          <View style={styles.historyShorterContainer}>
+            <ThisDayHomeButton screenName={"This Day in History"} />
+          </View>
+          <View style={styles.DadShorterContainer}>
+            <DadHomeButton screenName={"Dad Jokes"} />
+          </View>
+          <View style={styles.InspirationShorterContainer}>
+            <InspirationHomeButton screenName={"Bored"} />
           </View>
         </View>
       ) : (
@@ -193,27 +123,19 @@ const HomeScreen = ({ navigation }) => {
             <Text style={styles.quote}>"{quote}"</Text>
             <Text style={styles.author}>-{author}</Text>
           </View>
-          <View style={backgroundBtnStyleCatShorter}>
-            <Pressable
-              style={buttonStyleCatShorter}
-              onPressIn={() => {
-                setBackgroundButtonStyleCatShorter(
-                  styles.backgroundBoxCatsSmallerPressed
-                );
-                setButtonStyleCatShorter(styles.frontBoxPressedCatShorter);
-              }}
-              onPressOut={() => {
-                setBackgroundButtonStyleCatShorter(
-                  styles.backgroundBoxCatsSmaller
-                );
-                setButtonStyleCatShorter(styles.frontBoxUnPressedCatShorter);
-              }}
-            >
-              <Image
-                style={styles.imgTopCatSmaller}
-                source={require("../../../assets/Cat.png")}
-              />
-            </Pressable>
+
+          <View style={styles.catsSmallerContainer}>
+            <CatsHomeButton screenName={"Advice From Cats"} />
+          </View>
+
+          <View style={styles.historyShorterContainer}>
+            <ThisDayHomeButton screenName={"This Day in History"} />
+          </View>
+          <View style={styles.DadShorterContainer}>
+            <DadHomeButton screenName={"Dad Jokes"} />
+          </View>
+          <View style={styles.InspirationShorterContainer}>
+            <InspirationHomeButton screenName={"Bored"} />
           </View>
         </View>
       )}
@@ -484,24 +406,24 @@ const styles = StyleSheet.create({
     fontSize: 10,
   },
 
-  backgroundBoxUnPressedCatShorter: {
-    position: "relative",
-    top: -100,
-    left: -72,
-    height: 150,
-    width: 150,
-    backgroundColor: "grey", //"#A4B0F5", //
-    borderRadius: 25,
-    marginTop: 2,
-    shadowColor: "#A4B0F5",
-    shadowOffset: {
-      width: 10,
-      height: -3,
-    },
-    shadowOpacity: 0.41,
-    shadowRadius: 9.11,
-    elevation: 20,
-  },
+  // backgroundBoxUnPressedCatShorter: {
+  //   position: "relative",
+  //   top: -100,
+  //   left: -72,
+  //   height: 150,
+  //   width: 150,
+  //   backgroundColor: "grey", //"#A4B0F5", //
+  //   borderRadius: 25,
+  //   marginTop: 2,
+  //   shadowColor: "#A4B0F5",
+  //   shadowOffset: {
+  //     width: 10,
+  //     height: -3,
+  //   },
+  //   shadowOpacity: 0.41,
+  //   shadowRadius: 9.11,
+  //   elevation: 20,
+  // },
 
   // backgroundBoxPressedCatShorter: {
   //   position: "relative",
@@ -841,6 +763,8 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     paddingRight: 10,
   },
+
+  //////////////////CATS Shorter
   backgroundBoxCatsSmaller: {
     height: 150,
     width: 150,
@@ -887,7 +811,7 @@ const styles = StyleSheet.create({
   frontBoxUnPressedCatShorter: {
     position: "relative",
     top: -10,
-    left: 5,
+    left: 2,
     height: 140,
     width: 145,
     backgroundColor: "#f7f7f7",
@@ -905,6 +829,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.41,
     shadowRadius: 9.11,
     elevation: 10,
+    borderWidth: 0.5,
   },
   imgTopCatSmaller: {
     position: "relative",
@@ -912,6 +837,62 @@ const styles = StyleSheet.create({
     height: "80%",
     width: 129,
     borderRadius: 20,
+  },
+  catsTextShorter: {
+    position: "absolute",
+    bottom: 110,
+    right: 20,
+    fontSize: 10,
+  },
+
+  //////////////////History Shorter
+  // imgTopCaveManSmaller: {
+  //   position: "relative",
+  //   top: 22,
+  //   height: "93%",
+  //   width: "87%",
+  //   borderRadius: 20,
+  // },
+  // backgroundBoxHistorySmaller: {
+  //   height: 150,
+  //   width: 150,
+  //   backgroundColor: "grey",
+  //   borderRadius: 25,
+  //   position: "relative",
+  //   top: 200,
+  //   right: -100,
+  // },
+  catsSmallerContainer: {
+    position: "relative",
+    top: 290,
+    right: 100,
+  },
+  historyShorterContainer: {
+    position: "relative",
+    top: 140,
+    right: -100,
+  },
+  DadShorterContainer: {
+    position: "relative",
+    top: 180,
+    right: 100,
+  },
+  InspirationShorterContainer: {
+    position: "relative",
+    top: 30,
+    right: -100,
+  },
+  widerContainer: {
+    flex: 1,
+    alignItems: "center",
+    position: "relative",
+    top: 100,
+  },
+  quotesLarger: {
+    position: "absolute",
+    top: "5%",
+    paddingLeft: 10,
+    paddingRight: 10,
   },
 });
 
