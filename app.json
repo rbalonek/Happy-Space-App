@@ -3,7 +3,7 @@
     "name": "Happy-Space",
     "slug": "HappySpace",
     "description": "A happy space to get some inspiration, Dad Jokes,see what happened today in history, and Advice from Cats.",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "privacy": "public",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
