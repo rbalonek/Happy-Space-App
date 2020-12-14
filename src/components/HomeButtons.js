@@ -2,6 +2,11 @@ import React, { useState } from "react";
 import { Text, View, StyleSheet, Pressable, Animated } from "react-native";
 
 export default function HomeButtons() {
+  const [backgroundBtnStyle, setBackgroundButtonStyle] = useState(
+    styles.backgroundBox
+  );
+  const [buttonStyle, setButtonStyle] = useState(styles.frontBoxPressed);
+
   return (
     <View style={styles.container}>
       <View intensity={1} style={styles.backroundBox}></View>

@@ -20,6 +20,13 @@ const HomeScreen = ({ navigation }) => {
   const [buttonStyleCat, setButtonStyleCat] = useState(
     styles.frontBoxPressedCat
   );
+  const [
+    backgroundBtnStyleCatShorter,
+    setBackgroundButtonStyleCatShorter,
+  ] = useState(styles.backgroundBoxCatShorter);
+  const [buttonStyleCatShorter, setButtonStyleCatShorter] = useState(
+    styles.frontBoxPressedCatShorter
+  );
 
   const [backgroundBtnStyleHistory, setBackgroundButtonStyleHistory] = useState(
     styles.backgroundBoxHistory
@@ -77,163 +84,112 @@ const HomeScreen = ({ navigation }) => {
       </View>
 
       {tallerPhone ? (
-        <View style={styles.buttonsTop}>
-          <View style={backgroundBtnStyleCat}></View>
-          <Pressable
-            style={buttonStyleCat}
-            onPressIn={() => {
-              setButtonStyleCat(styles.frontBoxPressedCat);
-              setBackgroundButtonStyleCat(styles.backgroundBoxPressedCat);
-            }}
-            onPressOut={() => {
-              setButtonStyleCat(styles.frontBoxUnPressedCat);
-              setBackgroundButtonStyleCat(styles.backgroundBoxUnPressedCat);
-              // NavCats();
-            }}
-            easing="ease-in-out"
-          >
-            <Image
-              style={styles.imgTopCat}
-              source={require("../../../assets/Cat.png")}
-            />
-            <Text style={styles.buttonTextTopCat}>Advice From Cats</Text>
-          </Pressable>
+        <View>
+          <View style={styles.buttonsTop}>
+            <View style={backgroundBtnStyleCat}></View>
+            <Pressable
+              style={buttonStyleCat}
+              onPressIn={() => {
+                setButtonStyleCat(styles.frontBoxPressedCat);
+                setBackgroundButtonStyleCat(styles.backgroundBoxPressedCat);
+              }}
+              onPressOut={() => {
+                setButtonStyleCat(styles.frontBoxUnPressedCat);
+                setBackgroundButtonStyleCat(styles.backgroundBoxUnPressedCat);
+                // NavCats();
+              }}
+            >
+              <Image
+                style={styles.imgTopCat}
+                source={require("../../../assets/Cat.png")}
+              />
+              <Text style={styles.buttonTextTopCat}>Advice From Cats</Text>
+            </Pressable>
 
-          <View style={backgroundBtnStyleHistory}></View>
-          <Pressable
-            style={buttonStyleHistory}
-            onPressIn={() => {
-              setButtonStyleHistory(styles.frontBoxPressedHistory);
-              setBackgroundButtonStyleHistory(
-                styles.backgroundBoxPressedHistory
-              );
-            }}
-            onPressOut={() => {
-              setButtonStyleHistory(styles.frontBoxHistoryUnPressed);
-              setBackgroundButtonStyleHistory(
-                styles.backgroundBoxUnPressedHistory
-              );
-              // NavCats();
-            }}
-            easing="ease-in-out"
-          >
-            <Image
-              style={styles.imgTopCaveMan}
-              source={require("../../../assets/thisDay.png")}
-            />
-            <Text style={styles.buttonTextHistory}>This day in History</Text>
-          </Pressable>
+            <View style={backgroundBtnStyleHistory}></View>
+            <Pressable
+              style={buttonStyleHistory}
+              onPressIn={() => {
+                setButtonStyleHistory(styles.frontBoxPressedHistory);
+                setBackgroundButtonStyleHistory(
+                  styles.backgroundBoxPressedHistory
+                );
+              }}
+              onPressOut={() => {
+                setButtonStyleHistory(styles.frontBoxHistoryUnPressed);
+                setBackgroundButtonStyleHistory(
+                  styles.backgroundBoxUnPressedHistory
+                );
+                // NavCats();
+              }}
+              easing="ease-in-out"
+            >
+              <Image
+                style={styles.imgTopCaveMan}
+                source={require("../../../assets/thisDay.png")}
+              />
+              <Text style={styles.buttonTextHistory}>This day in History</Text>
+            </Pressable>
+          </View>
+
+          <View style={styles.quotes}>
+            <Text style={styles.quote}>"{quote}"</Text>
+            <Text style={styles.author}>-{author}</Text>
+          </View>
+          <View style={styles.buttonsBottom}>
+            <View style={backgroundBtnStyleDadJokes}></View>
+            <Pressable
+              style={buttonStyleDadJokes}
+              onPressIn={() => {
+                setButtonStyleDadJokes(styles.frontBoxPressedDadJokes);
+                setBackgroundButtonStyleDadJokes(
+                  styles.backgroundBoxPressedDadJokes
+                );
+              }}
+              onPressOut={() => {
+                setButtonStyleDadJokes(styles.frontBoxUnPressedDadJokes);
+                setBackgroundButtonStyleDadJokes(
+                  styles.backgroundBoxUnPressedDadJokes
+                );
+                // NavCats();
+              }}
+              easing="ease-in-out"
+            >
+              <Image
+                style={styles.imgDadLarge}
+                source={require("../../../assets/DadLawn.jpg")}
+              />
+              <Text style={styles.buttonTextDadLarge}>Dad Jokes</Text>
+            </Pressable>
+
+            <View style={backgroundBtnStyleInspiration}></View>
+            <Pressable
+              style={buttonStyleInspiration}
+              onPressIn={() => {
+                setButtonStyleInspiration(styles.frontBoxPressedInspiration);
+                setBackgroundButtonStyleInspiration(
+                  styles.backgroundBoxPressedInspiration
+                );
+              }}
+              onPressOut={() => {
+                setButtonStyleInspiration(styles.frontBoxUnPressedInspiration);
+                setBackgroundButtonStyleInspiration(
+                  styles.backgroundBoxUnPressedInspiration
+                );
+                // NavCats();
+              }}
+            >
+              <Image
+                style={styles.imgInspirationLarge}
+                source={require("../../../assets/icon.png")}
+              />
+              <Text style={styles.buttonInspirationTextLarge}>Inspiration</Text>
+            </Pressable>
+          </View>
         </View>
       ) : (
         <View style={styles.buttonsTopShorter}>
-          <TouchableOpacity
-            style={styles.buttonShorter}
-            title="Advice from Cats"
-            onPress={() => navigation.navigate("Advice From Cats")}
-          >
-            <Image
-              style={styles.imgTopCatSmaller}
-              source={require("../../../assets/Cat.png")}
-            />
-            <Text style={styles.buttonTextTopShorter}>Advice From Cats</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={styles.buttonShorter}
-            title="This Day In History"
-            onPress={() => navigation.navigate("This Day in History")}
-          >
-            <Image
-              style={styles.imgTopCaveManSmaller}
-              source={require("../../../assets/thisDay.png")}
-            />
-            <Text style={styles.buttonTextHistoryTopShorter}>
-              This Day In History
-            </Text>
-          </TouchableOpacity>
-        </View>
-      )}
-
-      <View style={styles.quotes}>
-        <Text style={styles.quote}>"{quote}"</Text>
-        <Text style={styles.author}>-{author}</Text>
-      </View>
-
-      {tallerPhone ? (
-        <View style={styles.buttonsBottom}>
-          <View style={backgroundBtnStyleDadJokes}></View>
-          <Pressable
-            style={buttonStyleDadJokes}
-            onPressIn={() => {
-              setButtonStyleDadJokes(styles.frontBoxPressedDadJokes);
-              setBackgroundButtonStyleDadJokes(
-                styles.backgroundBoxPressedDadJokes
-              );
-            }}
-            onPressOut={() => {
-              setButtonStyleDadJokes(styles.frontBoxUnPressedDadJokes);
-              setBackgroundButtonStyleDadJokes(
-                styles.backgroundBoxUnPressedDadJokes
-              );
-              // NavCats();
-            }}
-            easing="ease-in-out"
-          >
-            <Image
-              style={styles.imgDadLarge}
-              source={require("../../../assets/DadLawn.jpg")}
-            />
-            <Text style={styles.buttonTextDadLarge}>Dad Jokes</Text>
-          </Pressable>
-
-          <View style={backgroundBtnStyleInspiration}></View>
-          <Pressable
-            style={buttonStyleInspiration}
-            onPressIn={() => {
-              setButtonStyleInspiration(styles.frontBoxPressedInspiration);
-              setBackgroundButtonStyleInspiration(
-                styles.backgroundBoxPressedInspiration
-              );
-            }}
-            onPressOut={() => {
-              setButtonStyleInspiration(styles.frontBoxUnPressedInspiration);
-              setBackgroundButtonStyleInspiration(
-                styles.backgroundBoxUnPressedInspiration
-              );
-              // NavCats();
-            }}
-          >
-            <Image
-              style={styles.imgInspirationLarge}
-              source={require("../../../assets/icon.png")}
-            />
-            <Text style={styles.buttonInspirationTextLarge}>Inspiration</Text>
-          </Pressable>
-        </View>
-      ) : (
-        <View style={styles.buttonsBottomShorter}>
-          <TouchableOpacity
-            style={styles.buttonShorter}
-            title="See Dad Jokes!"
-            onPress={() => navigation.navigate("Dad Jokes")}
-          >
-            <Image
-              style={styles.imgDadShort}
-              source={require("../../../assets/DadLawn.jpg")}
-            />
-            <Text style={styles.buttonDadTextShort}>Dad Jokes</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.buttonShorter}
-            title="Bored"
-            onPress={() => navigation.navigate("Bored")}
-          >
-            <Image
-              style={styles.imgInspirationShort}
-              source={require("../../../assets/icon.png")}
-            />
-            <Text style={styles.buttonInspirationTextShort}>Inspiration</Text>
-          </TouchableOpacity>
+          <Text>Shorter</Text>
         </View>
       )}
     </SafeAreaView>
@@ -268,7 +224,7 @@ const styles = StyleSheet.create({
   },
   quotes: {
     position: "relative",
-    top: "2%",
+    top: "35%",
     paddingLeft: 10,
     paddingRight: 10,
   },
@@ -286,7 +242,7 @@ const styles = StyleSheet.create({
   ////////////////////////////////////////////TOP CONTAINER ////////////////////////////////////////////
   buttonsTop: {
     position: "absolute",
-    top: "18%",
+    bottom: "90%",
     display: "flex",
     flexDirection: "row",
     flexWrap: "wrap",
@@ -400,7 +356,7 @@ const styles = StyleSheet.create({
   backgroundBoxUnPressedHistory: {
     position: "absolute",
     top: 0,
-    right: 0,
+    right: 5,
     height: 200,
     width: 200,
     backgroundColor: "grey", //"#A4B0F5", //
@@ -419,7 +375,7 @@ const styles = StyleSheet.create({
   backgroundBoxPressedHistory: {
     position: "absolute",
     top: 0,
-    right: 0,
+    right: 5,
     height: 200,
     width: 200,
     backgroundColor: "#A4B0F5",
@@ -440,7 +396,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#f7f7f7",
     position: "absolute",
     top: 0,
-    right: 0,
+    right: 5,
     borderRadius: 25,
     shadowColor: "#000",
     shadowOffset: {
@@ -459,7 +415,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#f7f7f7",
     position: "absolute",
     top: 0,
-    right: 5,
+    right: 10,
     marginTop: 5,
     borderRadius: 25,
     shadowColor: "#000",
@@ -476,39 +432,149 @@ const styles = StyleSheet.create({
   },
 
   ////////////////////////////// SMALLER SCREENS
-  imgTopCatSmaller: {
+  buttonsTopShorter: {
+    // position: "absolute",
+    // top: 220,
+    // left: 100,
+    // display: "flex",
+    // flexDirection: "row",
+    // flexWrap: "wrap",
+    // justifyContent: "space-around",
+    // width: "100%",
+    // height: "80%",
+  },
+
+  imgTopCatShorter: {
     position: "relative",
     top: 15,
-    height: "90%",
-    width: 149,
+    height: 170,
+    width: "100%", //149,
     borderRadius: 20,
   },
-  buttonTextTopShorter: {
-    color: "#312F2F",
-    fontWeight: "bold",
-    position: "relative",
-    bottom: 125,
-    zIndex: 999,
+
+  buttonTextTopCatShorter: {
+    position: "absolute",
+    bottom: 120,
+    left: -15,
+    fontSize: 10,
   },
-  imgTopCaveManSmaller: {
+
+  backgroundBoxUnPressedCatShorter: {
     position: "relative",
-    top: 22,
-    height: "93%",
-    width: "87%",
-    borderRadius: 20,
+    top: -100,
+    left: -72,
+    height: 150,
+    width: 150,
+    backgroundColor: "grey", //"#A4B0F5", //
+    borderRadius: 25,
+    marginTop: 2,
+    shadowColor: "#A4B0F5",
+    shadowOffset: {
+      width: 10,
+      height: -3,
+    },
+    shadowOpacity: 0.41,
+    shadowRadius: 9.11,
+    elevation: 20,
   },
-  buttonTextHistoryTopShorter: {
-    color: "#312F2F",
-    fontWeight: "bold",
+
+  backgroundBoxPressedCatShorter: {
     position: "relative",
-    bottom: 128,
-    zIndex: 999,
+    top: -100,
+    left: -72,
+    height: 150,
+    width: 150,
+    backgroundColor: "#A4B0F5",
+    borderRadius: 25,
+    marginTop: 2,
+    shadowColor: "#A4B0F5",
+    shadowOffset: {
+      width: 10,
+      height: -3,
+    },
+    shadowOpacity: 0.41,
+    shadowRadius: 9.11,
+    elevation: 20,
   },
+  frontBoxUnPressedCatShorter: {
+    position: "relative",
+    top: -85,
+    left: -47,
+    height: 122,
+    width: 100,
+    backgroundColor: "#f7f7f7",
+    position: "relative",
+    right: 207.9,
+    borderRadius: 25,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 10,
+      height: 27,
+    },
+    textAlign: "center",
+    justifyContent: "center",
+    alignItems: "center",
+    shadowOpacity: 0.41,
+    shadowRadius: 9.11,
+    elevation: 10,
+  },
+  frontBoxPressedCatShorter: {
+    position: "relative",
+    top: -70,
+    left: -70,
+    height: 80,
+    width: 90,
+    backgroundColor: "#f7f7f7",
+    position: "relative",
+    marginTop: 5,
+    right: 207,
+    borderRadius: 25,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 7,
+    },
+    shadowOpacity: 0.41,
+    shadowRadius: 9.11,
+    elevation: 70,
+    textAlign: "center",
+    justifyContent: "center",
+    backgroundColor: "white",
+  },
+
+  // imgTopCatSmaller: {
+  //   position: "relative",
+  //   top: 15,
+  //   height: "90%",
+  //   width: 149,
+  //   borderRadius: 20,
+  // },
+  // buttonTextTopShorter: {
+  //   color: "#312F2F",
+  //   fontWeight: "bold",
+  //   position: "relative",
+  //   bottom: 125,
+  //   zIndex: 999,
+  // },
+  // imgTopCaveManSmaller: {
+  //   position: "relative",
+  //   top: 22,
+  //   height: "93%",
+  //   width: "87%",
+  //   borderRadius: 20,
+  // },
+  // buttonTextHistoryTopShorter: {
+  //   color: "#312F2F",
+  //   fontWeight: "bold",
+  //   position: "relative",
+  //   bottom: 128,
+  //   zIndex: 999,
+  // },
 
   ////////////////////////////////////////////BOTTOM CONTAINER ////////////////////////////////////////////
   buttonsBottom: {
-    position: "absolute",
-    bottom: "6%",
+    position: "relative",
+    bottom: "-60%",
     display: "flex",
     flexDirection: "row",
     flexWrap: "wrap",
