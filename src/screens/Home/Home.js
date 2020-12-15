@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, SafeAreaView } from "react-native";
+import { View, Text, StyleSheet, SafeAreaView, Pressable } from "react-native";
 import "@expo/match-media";
 import { useMediaQuery } from "react-responsive";
 import ThisDayHomeButton from "../../components/ThisDayHomeButton";
 import CatsHomeButton from "../../components/CatsHomeButton";
 import DadHomeButton from "../../components/DadHomeButton";
 import InspirationHomeButton from "../../components/InpirationHomeButton";
+import AboutButton from "../../components/AboutButton";
+
 const HomeScreen = () => {
   const [quote, setQuote] = useState("Loading...");
   const [author, setAuthor] = useState("");
@@ -38,6 +40,18 @@ const HomeScreen = () => {
       <View style={styles.titleView}>
         <Text style={styles.title}>Welcome to Happy Space</Text>
       </View>
+
+      {tallerPhone ? (
+        <View style={styles.aboutButtonTaller}>
+          <Pressable>
+            <AboutButton />
+          </Pressable>
+        </View>
+      ) : (
+        <View style={[styles.aboutButtonSmaller]}>
+          <AboutButton />
+        </View>
+      )}
 
       {tallerPhone ? (
         <View style={styles.widerContainer}>
@@ -87,10 +101,21 @@ const HomeScreen = () => {
 };
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#ecf0f1", //"#A6D9F7", //
+    backgroundColor: "#A6D9F7",
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+  },
+
+  aboutButtonTaller: {
+    position: "absolute",
+    bottom: "10%",
+    zIndex: 999,
+  },
+  aboutButtonSmaller: {
+    position: "absolute",
+    bottom: "10%",
+    zIndex: 999,
   },
   titleView: {
     backgroundColor: "#312F2F",
@@ -160,7 +185,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     position: "relative",
-    top: 100,
+    top: 50,
   },
   quotesLarger: {
     position: "absolute",
