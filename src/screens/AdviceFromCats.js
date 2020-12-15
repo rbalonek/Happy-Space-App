@@ -88,6 +88,7 @@ export default function AdviceFromCats() {
       <Animatable.View
         style={styles.kittenContainer}
         animation={kittenAnimation}
+        duration={4000}
       >
         <Image
           style={styles.kittenImg}
@@ -101,6 +102,7 @@ export default function AdviceFromCats() {
         <View>
           {tallerPhone && (
             <Animatable.View
+              duration={3000}
               style={styles.yesNoContainer}
               animation={yesNoAnimation}
             >
@@ -113,6 +115,7 @@ export default function AdviceFromCats() {
           )}
           {shorterPhone && (
             <Animatable.View
+              duration={2000}
               style={styles.yesNoContainerShorter}
               animation={yesNoAnimation}
             >
@@ -136,6 +139,7 @@ export default function AdviceFromCats() {
         <View>
           {tallerPhone && (
             <Animatable.View
+              duration={2000}
               style={styles.adviceContainer}
               animation={adviceAnimation}
             >
@@ -148,6 +152,7 @@ export default function AdviceFromCats() {
           )}
           {shorterPhone && (
             <Animatable.View
+              duration={2000}
               style={styles.adviceContainerShorter}
               animation={adviceAnimation}
             >

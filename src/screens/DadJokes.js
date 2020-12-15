@@ -54,6 +54,7 @@ export default function DadJokes() {
           </Animatable.View>
           <Animatable.View
             style={styles.jokeBubble}
+            delay={1000}
             animation={animation}
           ></Animatable.View>
         </>
@@ -161,7 +162,7 @@ const styles = StyleSheet.create({
   jokeContainerSmaller: {
     backgroundColor: "#00aabb",
     position: "relative",
-    top: "-25%",
+    top: "-50%",
     padding: 20,
     left: -55,
     width: "60%",
@@ -172,8 +173,8 @@ const styles = StyleSheet.create({
   },
   jokeBubbleShorter: {
     position: "relative",
-    right: "-13%",
-    top: "-37%",
+    right: "-33%",
+    top: "-127%",
     height: 50,
     width: 50,
     backgroundColor: "#00aabb",
