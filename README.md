@@ -5,7 +5,8 @@ In Happy-Space,  the user can catch up on some history, get a dad joke, and get 
 
 ## Open in App Store:
 
-![Happy Place](https://apps.apple.com/us/app/happy-space/id1544516931)
+<a href="https://apps.apple.com/us/app/happy-space/id1544516931"><img src="https://res.cloudinary.com/bobalobbadingdong/image/upload/v1608138072/Expo%20Projects/icon_j1v8t7.png" align="center" height="100" ></a>
+
 
 
 ### Inspirational Ideas
