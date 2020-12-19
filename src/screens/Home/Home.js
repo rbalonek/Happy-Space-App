@@ -109,12 +109,12 @@ const styles = StyleSheet.create({
 
   aboutButtonTaller: {
     position: "absolute",
-    bottom: "10%",
+    bottom: "5%",
     zIndex: 999,
   },
   aboutButtonSmaller: {
     position: "absolute",
-    bottom: "5%",
+    bottom: "15%",
     zIndex: 999,
   },
   titleView: {
@@ -189,7 +189,7 @@ const styles = StyleSheet.create({
   },
   quotesLarger: {
     position: "absolute",
-    top: "5%",
+    top: "10%",
     paddingLeft: 10,
     paddingRight: 10,
   },

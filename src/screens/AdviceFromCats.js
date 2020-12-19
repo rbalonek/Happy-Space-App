@@ -250,7 +250,7 @@ const styles = StyleSheet.create({
   adviceWordBubble: {
     transform: [{ scaleY: -1 }],
     position: "relative",
-    bottom: "90%",
+    bottom: "80%",
     zIndex: -1,
   },
   adviceText: {
