@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
   },
   aboutButtonSmaller: {
     position: "absolute",
-    bottom: "10%",
+    bottom: "25%",
     zIndex: 999,
   },
   titleView: {
