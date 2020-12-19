@@ -54,9 +54,9 @@ export default function ThisDayHistory() {
       <StatusBar style="auto" />
 
       {date ? (
-        <Animatable.View
+        <View
           style={styles.historyContainer}
-          animation={animation}
+          // animation={animation}
           easing="ease-in"
         >
           {date ? (
@@ -88,7 +88,7 @@ export default function ThisDayHistory() {
           ) : (
             <Text></Text>
           )}
-        </Animatable.View>
+        </View>
       ) : (
         <Text></Text>
       )}

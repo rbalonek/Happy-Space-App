@@ -112,9 +112,9 @@ export default function Bored() {
       <StatusBar style="auto" />
 
       {idea ? (
-        <Animatable.View style={styles.ideaContainer} animation={animation}>
+        <View style={styles.ideaContainer}>
           <Text style={styles.idea}>"{idea}"</Text>
-        </Animatable.View>
+        </View>
       ) : (
         <View></View>
       )}
