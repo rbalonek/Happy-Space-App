@@ -321,7 +321,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     position: "relative",
     top: "8%",
-    right: "-0%",
+    textAlign: "center",
   },
   adviceWordBubbleShorter: {
     transform: [{ scaleY: -1 }],

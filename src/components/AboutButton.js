@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.41,
     shadowRadius: 9.11,
     elevation: 10,
-    borderWidth: 0.25,
+    // borderWidth: 0.25,
   },
   frontBoxPressed: {
     height: 40,
