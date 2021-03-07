@@ -109,12 +109,12 @@ const styles = StyleSheet.create({
 
   aboutButtonTaller: {
     position: "absolute",
-    bottom: "10%",
+    bottom: "5%",
     zIndex: 999,
   },
   aboutButtonSmaller: {
     position: "absolute",
-    bottom: "10%",
+    bottom: "5%",
     zIndex: 999,
   },
   titleView: {
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
   title: {
     color: "#A6D9F7",
     fontSize: 25,
-    fontFamily: "Baskerville-SemiBold",
+    // fontFamily: "Baskerville-SemiBold",
     position: "relative",
     top: "20%",
   },
@@ -189,7 +189,7 @@ const styles = StyleSheet.create({
   },
   quotesLarger: {
     position: "absolute",
-    top: "5%",
+    top: "10%",
     paddingLeft: 10,
     paddingRight: 10,
   },

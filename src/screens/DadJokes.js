@@ -162,9 +162,9 @@ const styles = StyleSheet.create({
   jokeContainerSmaller: {
     backgroundColor: "#00aabb",
     position: "relative",
-    top: "-50%",
+    top: "-100%",
     padding: 20,
-    left: -55,
+    left: -40,
     width: "60%",
     borderRadius: 50,
     shadowOffset: { width: 5, height: 5 },
@@ -173,8 +173,8 @@ const styles = StyleSheet.create({
   },
   jokeBubbleShorter: {
     position: "relative",
-    right: "-33%",
-    top: "-127%",
+    right: "-38%",
+    top: "-160%",
     height: 50,
     width: 50,
     backgroundColor: "#00aabb",
