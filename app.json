@@ -8,7 +8,7 @@
 
     "privacy": "public",
     "orientation": "portrait",
-    "icon": "./assets/icon",
+    "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
