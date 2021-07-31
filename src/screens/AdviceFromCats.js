@@ -51,7 +51,7 @@ export default function AdviceFromCats() {
   };
 
   const fetchKitten = () => {
-    fetch(`https://aws.random.cat/meow`, {
+    fetch(`https://thatcopy.pw/catapi/rest/`, {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -59,7 +59,7 @@ export default function AdviceFromCats() {
     })
       .then((response) => response.json())
       .then((response) => {
-        setKitten(response.file);
+        setKitten(response.webpurl);
         setKittenAnimation("flipInY");
       })
       .catch((err) => {
