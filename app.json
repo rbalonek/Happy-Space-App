@@ -24,7 +24,7 @@
       "buildNumber": "1.0.3"
     },
     "android": {
-      "package": "com.robertbalonek.happyplace",
+      "package": "com.robertbalonek.happy-place",
       "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
