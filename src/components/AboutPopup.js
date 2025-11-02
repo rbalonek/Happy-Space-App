@@ -4,15 +4,17 @@ import { View, Text, Pressable, StyleSheet, Linking } from "react-native";
 export default function AboutPopup() {
   return (
     <View style={styles.container}>
-      <Text style={styles.aboutMe}>Created by:</Text>
-      <Text style={styles.aboutMe}>Robert Balonek</Text>
+      <Text style={styles.aboutMe}>Created by: Robert Balonek</Text>
+      <Text style={styles.aboutMe}></Text>
+      <Text style={styles.aboutMe}>I created this in 2020 as my first App Store App using APIs and React Native.</Text>
+      
 
       <View style={styles.button}>
         <Pressable>
           <Text
             style={styles.buttonText}
             onPress={() => {
-              Linking.openURL("https://www.robertbalonek.dev/");
+              Linking.openURL("https://www.robertbalonek.dev/?utm_source=happy_space_app");
             }}
           >
             View My Portfolio

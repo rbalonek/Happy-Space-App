@@ -26,7 +26,7 @@ export default function DadHomeButton({ screenName }) {
         >
           <Image
             style={styles.imgTop}
-            source={require("../../assets/DadLawn.jpg")}
+            source={require("../../assets/DadLawn.png")}
           />
           <Text style={styles.text}>Dad Jokes</Text>
         </Pressable>

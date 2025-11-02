@@ -2,11 +2,10 @@ import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
 import { StyleSheet, Text, View, Linking } from "react-native";
 import * as Animatable from "react-native-animatable";
-import "@expo/match-media";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 export default function ThisDayHistory() {
-  const [animation, setAnimation] = useState("zoomInLeft");
+  const [animation, setAnimation] = useState("slideInUp");
   const [description, setDescription] = useState("Click for Idea!");
   const [date, setDate] = useState("");
   const [wiki, setWiki] = useState("");
@@ -29,14 +28,13 @@ export default function ThisDayHistory() {
       .then((response) => {
         const length = response.events.length;
         const randomNum = getRandomInt(length);
-        setAnimation("lightSpeedOut");
-        setAnimation("flipInX");
+        setAnimation("slideInUp");
         setDate(response.events[randomNum].year);
         setDescription(response.events[randomNum].description);
         setWiki(response.events[randomNum].wikipedia[0].wikipedia);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       });
   };
 
@@ -57,7 +55,8 @@ export default function ThisDayHistory() {
         <Animatable.View
           style={styles.historyContainer}
           animation={animation}
-          easing="ease-in"
+          duration={600}
+          easing="ease-out"
         >
           {date ? (
             <Text style={[styles.year, styles.text]}>
@@ -92,7 +91,7 @@ export default function ThisDayHistory() {
       ) : (
         <Text></Text>
       )}
-      <Animatable.View animation="zoomIn" style={styles.buttonContainer}>
+      <Animatable.View animation="fadeIn" duration={800} style={styles.buttonContainer}>
         <TouchableOpacity onPress={fetchApiCall}>
           <View style={styles.button}>
             <Text style={styles.buttonText}>Learn Some History!</Text>
