@@ -12,11 +12,16 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": false,
-      "bundleIdentifier": "com.robertbalonek.happy-place",
-      "buildNumber": "1.1.0"
+      "bundleIdentifier": "com.robertbalonek.happyplace",
+      "buildNumber": "1.1.0",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "package": "com.robertbalonek.happyplace",
@@ -34,6 +39,11 @@
     "plugins": [
       "expo-font"
     ],
-    "scheme": "happyspace"
+    "scheme": "happyspace",
+    "extra": {
+      "eas": {
+        "projectId": "b15eea9c-5302-4150-bbea-cf26e1231985"
+      }
+    }
   }
 }
