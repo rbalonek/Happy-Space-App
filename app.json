@@ -3,7 +3,7 @@
     "name": "Happy-Space",
     "slug": "HappySpace",
     "description": "A happy space to get some inspiration, Dad Jokes, see what happened today in history, and Advice from Cats.",
-    "version": "1.1.0",
+    "version": "2.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
@@ -18,14 +18,14 @@
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.robertbalonek.happyplace",
-      "buildNumber": "1.1.0",
+      "buildNumber": "2.0.0",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
       }
     },
     "android": {
       "package": "com.robertbalonek.happyplace",
-      "versionCode": 4,
+      "versionCode": 5,
       "permissions": [],
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
