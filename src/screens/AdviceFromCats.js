@@ -253,7 +253,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     zIndex: 999,
-    bottom: "-15%",
+    marginTop: 10,
   },
 
   yesNoWordBubble: {
@@ -272,7 +272,7 @@ const styles = StyleSheet.create({
 
   adviceContainer: {
     position: "relative",
-    top: "-10%",
+    marginTop: 10,
     width: "65%",
     alignItems: "center",
     justifyContent: "center",
@@ -329,22 +329,22 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     zIndex: 999,
-    bottom: "-15%",
+    marginTop: 10,
   },
   yesNoWordBubbleShorter: {
     position: "relative",
-    bottom: "40%",
+    bottom: "10%",
     transform: [{ scaleY: -1 }],
   },
   yesNoShorter: {
     fontSize: 60,
     position: "relative",
-    bottom: "-20%",
+    top: "45%",
     zIndex: 999,
   },
   adviceContainerShorter: {
     position: "relative",
-    top: "-10%",
+    marginTop: 10,
     width: "75%",
     alignItems: "center",
     justifyContent: "center",
@@ -354,7 +354,7 @@ const styles = StyleSheet.create({
     color: "black",
     fontSize: 20,
     position: "relative",
-    top: "8%",
+    bottom: "48%",
     textAlign: "center",
     paddingHorizontal: 20,
     paddingVertical: 10,
@@ -362,7 +362,7 @@ const styles = StyleSheet.create({
   adviceWordBubbleShorter: {
     transform: [{ scaleY: -1 }],
     position: "relative",
-    bottom: "50%",
+    bottom: "105%",
     zIndex: -1,
   },
 });
